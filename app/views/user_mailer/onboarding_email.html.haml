@@ -1,0 +1,81 @@
+%head
+  :css
+    @media screen and (max-width: 750px) {
+      .width-full {
+        width: 100% !important;
+      }
+    }
+%body
+  /[if mso| (IE)]
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="530">
+    <tr>
+    <td>
+  %table.width-full(align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 530px; Margin: 0 auto !important; background-color: white; font-family: 'Open Sans', Arial, sans-serif;" width="100%")
+    %tr
+      %td
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          %tr
+            %td(style="font-size: 20px; font-weight: 600; border-top: 5px solid #99ca3b; padding-top: 10px;")
+              = I18n.t('mailer.onboarding_email.welcome_title', company_name: @company.name)
+            %td(width="60")
+              = image_tag(@company.display_logo_image ? @company.display_logo_image.file_url : DisplayLogoImageUploader.new.default_url, alt: I18n.t('mailer.onboarding_email.greyhd'), width: '60', height: '60')
+    %tr
+      %td(style="padding-bottom: 5px;")
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          %tr
+            %td(style="padding-top: 20px; padding-bottom: 20px;")
+              %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+                %tr
+                  %td(style="font-size: 12px; padding-bottom: 15px;")
+                    - if @invite.welcome_note.present?
+                      = simple_format(@invite.welcome_note)
+                    - else
+                      = I18n.t('mailer.onboarding_email.welcome_note', start_date: @user.start_date,
+                                                               company_name: @company.name).html_safe
+    %tr
+      %td(style="padding-bottom: 40px;")
+        /[if mso]
+          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:40px;v-text-anchor:middle;width:257px;" arcsize="8%" stroke="f" fillcolor="#99ca3b">
+          <w:anchorlock/>
+          <center>
+        %a(href="#{root_url(anchor: "/invite/#{@invite.token}")}" style="background-color: #99ca3b; border-radius: 3px; letter-spacing: 1px; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 14px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 257px; -webkit-text-size-adjust: none;")
+          = I18n.t('mailer.onboarding_email.setup_greyhd_profile')
+        /[if mso]
+          </center>
+          </v:roundrect>
+    %tr
+      %td(style="padding-bottom: 20px;")
+        %span(style="font-size: 14px; font-weight: 700; line-height: 17px; padding: 5px 0; border-bottom: 1px solid #bdbdbd;")
+          = I18n.t('mailer.onboarding_email.additional_information_title')
+
+    %tr
+      %td(style="padding-bottom: 5px;")
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          %tr
+            %td(style="font-size: 12px; padding-bottom: 15px;")
+              - if @invite.additional_information.present?
+                = simple_format(@invite.additional_information)
+              - else
+                = I18n.t('mailer.onboarding_email.additional_information', company_owner_first_name: @company.owner.try(:first_name) || @company.name,
+                                                                 company_owner_email: @company.owner.try(:email) || @company.email_address,
+                                                                 company_name: @company.name,
+                                                                 start_date: @user.start_date).html_safe
+    %tr
+      %td(style="padding-bottom: 15px;")
+        %span(style="display: block; width: 30px; border-bottom: 1px solid #838383")
+    %tr
+      %td(style="font-size: 10px; font-weight: 600; padding-bottom: 5px;")
+        = I18n.t('mailer.onboarding_email.powered_by')
+        = succeed " | " do
+          %a(href="#" style="text-decoration: none; color: #99ca3b;")>
+            = I18n.t('mailer.onboarding_email.greyhd')
+        = succeed " | " do
+          %a(href="mailto:support@trygreyhd.com" style="text-decoration: none; color: #000;")>
+            support@trygreyhd.com
+        %a(href="tel:855-926-3501" style="text-decoration: none; color: #000;") 855-926-3501
+    %tr
+      %td(style="font-size: 10px; padding-bottom: 10px;")
+        = I18n.t('mailer.onboarding_email.greyhd_inc')
+    %tr
+      %td(style="font-size: 10px; padding-bottom: 10px;")
+        = I18n.t('mailer.onboarding_email.copyright')

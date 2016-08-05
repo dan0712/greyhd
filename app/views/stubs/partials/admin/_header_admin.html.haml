@@ -1,0 +1,41 @@
+%header.header-admin
+  .container
+    .row
+      .col-xs-12
+        .header-admin__content
+          .header-admin__section
+            = link_to '#', class: 'header-admin__logo header-admin__item' do
+              = image_tag 'general/main_logo.svg', class: 'header-admin__logo-img'
+
+            %nav.header-admin__nav
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = t('admin.header.nav.home')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = t('admin.header.nav.company')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = t('admin.header.nav.team')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = t('admin.header.nav.training')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = t('admin.header.nav.resources')
+              %a.header-admin__nav-item.header-admin__nav-item--active.header-admin__item(href="#")
+                = t('admin.header.nav.admin')
+
+          .header-admin__section.no-shrink
+            .header-admin__search-wrap.header-admin__item
+              %i.header-admin__search-icon.icon.icon-magnifier
+              %input.header-admin__search(type="search"
+                                          placeholder="#{t('admin.header.search')}")
+            %a.header-admin__draft.header-admin__item(href="#")
+              %i.icon.icon-draft
+
+            .header-admin__user-wrap.header-admin__item(uib-dropdown is-open="status.isopen")
+              .header-admin__user-img(uib-dropdown-toggle ng-disabled="disabled")
+                = image_tag 'temp/user1.jpg', class: 'img-inherit'
+              .header-admin__user-menu(uib-dropdown-menu role="menu" aria-labelledby="single-button")
+                %ul.header-admin__user-menu-content
+                  %li(role="menuitem")
+                    %a.header-admin__user-menu-item(href="#")
+                      %i.header-admin__user-menu-item-icon.icon.icon-power-off
+                      %span.header-admin__user-menu-item-text
+                        = I18n.t('admin.header.sign_out')

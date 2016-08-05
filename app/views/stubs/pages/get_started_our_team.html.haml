@@ -1,0 +1,127 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        %section.gs-story__section
+          %h1.gs-story__title
+            %span.gs-story__title-text
+              = I18n.t('our_team.title')
+          %p.gs-story__text-sm
+            Research your colleagues by Location, Team, or view the entire company on a single Organizational Chart. You can also learn more about each team member, including their contact details, by clicking their profile.
+
+        .gs-team__tabs-wrap
+          .gs-team__tabs-modal(style="display: none;")
+            .gs-team__tabs-modal-box
+              %i.gs-team__tabs-modal-box-close.icon.icon-cross
+              .gs-team__tabs-modal-member-img
+                = image_tag 'temp/welcome_team.jpg', class: 'img-inherit'
+              .gs-team__tabs-modal-member-head-info
+                %h3.gs-team__tabs-modal-member-title
+                  Sarah Salem
+                %p.gs-team__tabs-modal-member-position
+                  Customer Success Manager
+              %p.gs-team__tabs-modal-member-text
+                I joined greyhd in 2013 following 5 years working in startups. I love working with people that are passionate about the digital world and love cooking, hiking, and traveling.
+              %p.gs-team__tabs-modal-member-text
+                %a.in-navy-700(href="#")
+                  sarah@greyhd.co
+                |
+                %a.in-navy-700(href="tel:4153239318")
+                  (415) 323-9318
+                | NYC
+          %uib-tabset.gs-team__tabs(active="active")
+            %uib-tab.gs-team__tab(index="0")
+              %uib-tab-heading
+                .gs-team__tab-head-item
+                  %i.gs-team__tab-head-icon.icon.icon-location
+                  %span.gs-team__tab-head-text
+                    = I18n.t('our_team.location')
+              .gs-team__tab-pane-head
+                %i.gs-team__tab-pane-head-arrow.gs-team__tab-pane-head-arrow--left.icon.icon-arrow-left
+                %i.gs-team__tab-pane-head-arrow.gs-team__tab-pane-head-arrow--right.icon.icon-arrow-right
+                %h2.gs-team__tab-pane-head-title
+                  San Francisco (12 Members)
+                %p.gs-team__tab-pane-head-text
+                  San Francisco is our Flagship office and was where the company was founded in 2015. The office is home to 12 of our 341 employees and consists primarily of the Sales and Customer Success teams.
+              .gs-team__tab-pane-content
+                %ul.gs-team__tab-pane-people-list
+                  - 12.times do
+                    %li.gs-team__tab-pane-people-li
+                      .gs-team__tab-pane-people-li-img-wrap
+                        = image_tag 'temp/welcome_team.jpg', class: 'img-inherit'
+                      %p.gs-team__tab-pane-people-li-name
+                        Edmond
+                        %br
+                        O’Connell
+                      %p.gs-team__tab-pane-people-li-positions
+                        Customer Success
+
+            %uib-tab.gs-team__tab(index="1")
+              %uib-tab-heading
+                .gs-team__tab-head-item
+                  %i.gs-team__tab-head-icon.icon.icon-teams
+                  %span.gs-team__tab-head-text
+                    = I18n.t('our_team.teams')
+              .gs-team__tab-pane-head
+                %i.gs-team__tab-pane-head-arrow.gs-team__tab-pane-head-arrow--left.icon.icon-arrow-left
+                %i.gs-team__tab-pane-head-arrow.gs-team__tab-pane-head-arrow--right.icon.icon-arrow-right
+                %h2.gs-team__tab-pane-head-title
+                  San Francisco (12 Members)
+                %p.gs-team__tab-pane-head-text
+                  San Francisco is our Flagship office and was where the company was founded in 2015. The office is home to 12 of our 341 employees and consists primarily of the Sales and Customer Success teams.
+              .gs-team__tab-pane-content
+                %ul.gs-team__tab-pane-people-list
+                  - 12.times do
+                    %li.gs-team__tab-pane-people-li
+                      .gs-team__tab-pane-people-li-img-wrap
+                        = image_tag 'temp/welcome_team.jpg', class: 'img-inherit'
+                      %p.gs-team__tab-pane-people-li-name
+                        Edmond
+                        %br
+                        O’Connell
+                      %p.gs-team__tab-pane-people-li-positions
+                        Customer Success
+            %uib-tab.gs-team__tab(index="2")
+              %uib-tab-heading
+                .gs-team__tab-head-item
+                  %i.gs-team__tab-head-icon.icon.icon-organization
+                  %span.gs-team__tab-head-text
+                    = I18n.t('our_team.organizational_chart')
+              .gs-team__tab-pane-head
+                %h2.gs-team__tab-pane-head-title
+                  Organization of Company
+                %p.gs-team__tab-pane-head-text
+                  The company is led by CEO and Founder Bart Macdonald, and is comprised of
+                  %strong.font-bold 45
+                  employees across
+                  %strong.font-bold
+                    five
+                  key divisions.
+              .gs-team__tab-pane-content
+                .gs-team__team-list.clearfix
+                  %ul.gs-team__team-list-row.gs-team__team-list-row--top
+                    %li.gs-team__team-li.gs-team__team-li--top
+                      .gs-team__team-li-img
+                        = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                      .gs-team__team-li-info
+                        %p.gs-team__team-li-info-title
+                          Bart Macdonald
+                        %p.gs-team__team-li-info-text
+                          CEO
+                  .gs-team__team-list-row-wrap
+                    %ul.gs-team__team-list-row.gs-team__team-list-row--main
+                      - 5.times do
+                        %li.gs-team__team-li.gs-team__team-li--main
+                          .gs-team__team-li-img
+                            = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                          .gs-team__team-li-info
+                            %p.gs-team__team-li-info-title
+                              Cassy Walker
+                            %p.gs-team__team-li-info-text
+                              VP of Product
+                          .gs-team__team-li-sub
+                            %a.gs-team__team-li-sub-img(href="#")
+                              = image_tag 'general/team_list.svg', class: 'img-inherit', alt: ''
+        .text-xs-center
+          %button.main-btn.main-btn--navy-600.min-12.m-b-3(type="button")
+            = I18n.t('our_story.next')

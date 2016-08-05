@@ -1,0 +1,98 @@
+.a-people__content
+  %h1.a-main__title
+    = I18n.t('admin.people.complete.title')
+  .m-b-2.clearfix
+    %p.a-people__text
+      = I18n.t('admin.people.complete.lets_complete')
+
+  %section.a-people__complete-list.clearfix
+    %table.a-people__complete-top-table
+      %colgroup
+        %col(width="38%")
+        %col(width="62%")
+      %tr
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.name')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.first_name }} {{ onboard_ctrl.user.last_name }}
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.title')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.title }}
+      %tr
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.company_email')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.email }}
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.personal_email')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.personal_email }}
+      %tr
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.start_date')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.start_date | date: 'MMMM yyyy' }}
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.location')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.location.name }}
+      %tr
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.team')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.team.name }}
+        %td.a-people__complete-top-td
+          %p.a-people__complete-top-table-title
+            = I18n.t('admin.people.complete.head_sections.manager')
+          %p.a-people__complete-top-table-text
+            {{ onboard_ctrl.user.manager.name }}
+    .max-60
+      %label.admin-input__label(for="#{I18n.t('admin.company.general.company_bio').parameterize}")
+        Welcome note
+      .admin-input__wrap
+        %textarea.admin-input__input(id="#{I18n.t('admin.company.general.company_bio').parameterize}"
+                                     rows="6"
+                                     ng-model="step.email_template.welcome_note")
+
+    .max-60
+      %label.admin-input__label(for="#{I18n.t('admin.company.general.company_bio').parameterize}")
+        Additional information
+      .admin-input__wrap
+        %textarea.admin-input__input(id="#{I18n.t('admin.company.general.company_bio').parameterize}"
+                                     rows="6"
+                                     ng-model="step.email_template.additional_information")
+
+    .a-people__complete-notifications
+      .m-r-3.no-shrink
+        %p.a-people__complete-notifications-title
+          = I18n.t('admin.people.complete.notification_email')
+        %p.a-people__complete-notifications-text
+          %span April 26, 2016
+          (Seven #{I18n.t('admin.people.complete.days_before')})
+
+      .p-t-5.no-shrink
+        %button.simple-btn.simple-btn--blue-380.min-11(type="button"
+                                                       ng-click="step.preview()")
+          = I18n.t('admin.people.complete.preview')
+
+  %div
+    %label.a-people__complete-checkbox-wrap
+      %input.a-people__complete-checkbox(type="checkbox"
+                                         ng-model="step.confirm_checked")
+      %span.a-people__complete-checkbox-text
+        = I18n.t('admin.people.complete.confirm_info')
+
+  %button.simple-btn.simple-btn--blue-380.min-11(type="button"
+                                                 tooltip-enable="!step.confirm_checked"
+                                                 ng-click="step.continue()"
+                                                 uib-tooltip="#{I18n.t('admin.people.complete.finish_tooltip')}"
+                                                 ng-class="{ disabled: !step.confirm_checked }")
+    = I18n.t('admin.people.finish')

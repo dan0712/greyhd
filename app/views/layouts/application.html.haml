@@ -1,0 +1,13 @@
+!!!
+%html(ng-app="greyhd" ng-controller="MainController as main_ctrl")
+  %head
+    %meta(charset="utf-8")
+    %meta(http-equiv="X-UA-Compatible" content="IE=Edge,chrome=1")
+    %meta(name="viewport" content="width=device-width, initial-scale=1.0")
+    = stylesheet_link_tag "https://fonts.googleapis.com/css?family=Open+Sans:400,300,600,700"
+    %title(ng-bind="main_ctrl.Template.getTitle()")
+      = I18n.t('default_title')
+    = stylesheet_link_tag 'application', media: 'all'
+  %body(ng-class="{{ main_ctrl.Template.getBodyClasses() }}")
+    .ui-view(ng-class="main_ctrl.Template.getContainerClasses()")
+    = javascript_include_tag 'application'

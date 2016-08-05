@@ -1,0 +1,99 @@
+.a-people__panel
+  .flex-grow
+    .max-66
+      %h1.a-main__title
+        = I18n.t('admin.people.manage.heading')
+
+      .a-field-box
+        %label.admin-input__label.in-black
+          = I18n.t('admin.people.manage.filter_users')
+        .admin-input__wrap
+          %input.admin-input__input(type="text"
+                                    name="people_search"
+                                    placeholder="#{I18n.t('admin.people.manage.search_name_email')}"
+                                    ng-model="manage_ctrl.filter.values.term"
+                                    ng-model-options="{ debounce: 500 }"
+                                    ng-change="manage_ctrl.filter.go()")
+
+        .a-field-box-select-list
+          .a-field-box-select-li.m-r-1
+            .admin-input__wrap
+              %ui-select.main-select(theme="selectize"
+                                     data-qa-id="people-manage-location"
+                                     ng-model="manage_ctrl.filter.values.location_id"
+                                     ng-change="manage_ctrl.filter.go()")
+                %ui-select-match(placeholder="#{I18n.t('admin.people.manage.search_by_location')}")
+                  {{ $select.selected.name }}
+                %ui-select-choices(repeat="location.id as location in manage_ctrl.locations")
+                  %span
+                    {{ ::location.name }}
+
+          .a-field-box-select-li.m-r-1
+            .admin-input__wrap
+              %ui-select.main-select(theme="selectize"
+                                     data-qa-id="people-manage-team"
+                                     ng-model="manage_ctrl.filter.values.team_id"
+                                     ng-change="manage_ctrl.filter.go()")
+                %ui-select-match(placeholder="#{I18n.t('admin.people.manage.search_by_team')}")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="team.id as team in manage_ctrl.teams")
+                  %span
+                    {{ ::team.name }}
+
+          .a-field-box-select-li
+            .admin-input__wrap()
+              %ui-select.main-select(theme="selectize"
+                                     data-qa-id="people-manage-role"
+                                     ng-model="manage_ctrl.filter.values.role"
+                                     ng-change="manage_ctrl.filter.go()")
+                %ui-select-match(placeholder="#{I18n.t('admin.people.manage.search_by_role')}")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="role.id as role in manage_ctrl.roles")
+                  %span
+                    {{ ::role.name }}
+
+      .a-people__manage-table-wrap
+        %table.a-people__table--manage.a-simple-table
+          %colgroup
+            %col(width="25%")
+            %col(width="25%")
+            %col(width="25%")
+            %col(width="20%")
+            %col(width="5%")
+          %thead.a-company__table-head
+            %th.a-company__table-th
+              %p.a-simple-table__text.font-semi-bold
+                = I18n.t('admin.people.manage.name')
+            %th.a-company__table-th
+              %p.a-simple-table__text.font-semi-bold
+                = I18n.t('admin.people.manage.title')
+            %th.a-company__table-th
+              %p.a-simple-table__text.font-semi-bold
+                = I18n.t('admin.people.manage.last_activity')
+            %th.a-company__table-th
+              %p.a-simple-table__text.font-semi-bold
+                = I18n.t('admin.people.manage.role')
+            %th.a-company__table-th
+          %tbody
+            %tr.a-company__table-tr(ng-if="manage_ctrl.users.length"
+                                    ng-repeat="user in manage_ctrl.users | orderBy: 'id'"
+                                    data-qa-id="people-manage-user-row")
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  {{ ::user.first_name }} {{ ::user.last_name }}
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  {{ ::user.title }}
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  {{ ::user.last_activity_at }}
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  {{ ::user.role | splitUnderscore | capitalize }}
+              %td.a-company__table-td
+                %i.icon.icon-pencil(ng-if="manage_ctrl.isEditable(user)"
+                                    ng-click="manage_ctrl.edit(user)")
+            %tr.a-company__table-tr(ng-if="!manage_ctrl.users.length")
+              %td.a-company__table-td(colspan="5")
+                %p.a-simple-table__text.font-bold.text-xs-center
+                  = I18n.t('admin.people.manage.users_not_found')

@@ -1,0 +1,85 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        %section.gs-story__section
+          %h1.gs-story__title
+            %span.gs-story__title-text
+              = I18n.t('our_story.title')
+          %p.gs-story__text-sm
+            Let’s learn the story of greyhd. Here you’ll be able to review how we describe the company, our key milestones to date, company values, and upcoming events.
+          .text-xs-center.m-b-3.m-t-3
+            %iframe(width="506" height="285" src="https://www.youtube.com/embed/wpNtTMaiZbY?rel=0&amp;showinfo=0" frameborder="0" allowfullscreen)
+        .gs-story__section
+          %h2.gs-story__title-secondary
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.about')
+              greyhd
+          - 3.times do
+            %p.gs-story__text-md
+              By bringing together fragmented systems, processes and content into a single technology platform, greyhd makes it easy.
+        .gs-story__section
+          %h2.gs-story__title-secondary
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.key_milestones')
+          %uib-tabset.gs-milestones(active="active")
+            %uib-tab(index="0")
+              %uib-tab-heading
+                .gs-milestone__heading
+                  %span.gs-milestone__heading-text
+                    JAN
+              %article.clearfix
+                = image_tag 'temp/agenda_team.jpg', class: 'gs-milestone__img'
+                %p.gs-milestone__year
+                  2015
+                %h3.gs-milestone__title
+                  greyhd Born in San Francisco
+                %p.gs-milestone__text
+                  greyhd was born in 2015 through two Australian Co-Founders sharing their employee onboarding and training experiences.
+            %uib-tab(index="1")
+              %uib-tab-heading
+                .gs-milestone__heading
+                  %span.gs-milestone__heading-text
+                    JAN
+              %article.clearfix
+                = image_tag 'temp/agenda_team.jpg', class: 'gs-milestone__img'
+                %p.gs-milestone__year
+                  2016
+                %h3.gs-milestone__title
+                  greyhd Born in San Francisco
+                %p.gs-milestone__text
+                  greyhd was born in 2015 through two Australian Co-Founders sharing their employee onboarding and training experiences.
+            %uib-tab(index="2")
+              %uib-tab-heading
+                .gs-milestone__heading
+                  %span.gs-milestone__heading-text
+                    JAN
+              %article.clearfix
+                = image_tag 'temp/agenda_team.jpg', class: 'gs-milestone__img'
+                %p.gs-milestone__year
+                  2017
+                %h3.gs-milestone__title
+                  greyhd Born in San Francisco
+                %p.gs-milestone__text
+                  greyhd was born in 2015 through two Australian Co-Founders sharing their employee onboarding and training experiences.
+
+        .gs-story__section
+          %h2.gs-story__title-secondary.m-b-3
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.company_values')
+          %article.gs-story__values-article
+            - 6.times do
+              %h4.gs-story__values-article-title
+                Judgement
+              %p.gs-story__values-article-text
+                We expect you to make wise decisions (people, technical, business, and creative despite ambiguity by identifying root causes that go beyond treating symptom. You think strategically, and separate what can be done well now, and what can be improved later.
+
+        .gs-story__section
+          .gs-story__gallery
+            - 6.times do
+              .gs-story__gallery-item-wrap
+                .gs-story__gallery-item
+                  = image_tag 'temp/agenda_team.jpg', class: 'gs-story__gallery-item-img'
+          .text-xs-center
+            %button.main-btn.main-btn--navy-600.min-12.m-b-3(type="button")
+              = I18n.t('our_story.next')

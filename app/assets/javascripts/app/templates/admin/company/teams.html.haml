@@ -1,0 +1,111 @@
+.a-company__panel
+  .a-company__content
+    .a-company__head
+      %h1.a-main__title
+        = I18n.t('admin.company.teams.title')
+      %p.a-company__text
+        = I18n.t('admin.company.teams.title_hint')
+    .a-company__table-aside-content
+      %table.a-company__table--teams.a-simple-table
+        %colgroup
+          %col(width="35%")
+          %col(width="35%")
+          %col(width="30%")
+        %thead.a-company__table-head
+          %th.a-company__table-th
+            %p.a-simple-table__text.font-semi-bold
+              = I18n.t('admin.company.teams.name')
+          %th.a-company__table-th.text-xs-center
+            %p.a-simple-table__text.font-semi-bold
+              = I18n.t('admin.company.teams.members')
+          %th.a-company__table-th.text-xs-center
+            %p.a-simple-table__text.font-semi-bold
+              = I18n.t('admin.company.teams.edit_delete')
+        %tbody
+          %tr.a-company__table-tr(ng-repeat="team in teams_ctrl.teams | orderBy: 'id'"
+                                  data-qa-id="company-teams-team-row")
+            %td.a-company__table-td
+              %p.a-simple-table__text
+                {{ ::team.name }}
+            %td.a-company__table-td.text-xs-center
+              %p.a-simple-table__text
+                {{ ::team.users_count }}
+            %td.a-company__table-td.text-xs-center
+              %i.a-simple-table__action.icon.icon-pencil(ng-click="teams_ctrl.edit(team)")
+              %i.a-simple-table__action.icon.icon-bin(ng-click="teams_ctrl.delete(team)")
+
+      %aside.a-company__aside-form
+        %h2.a-company__aside-form-title
+          {{ teams_ctrl.editTitle() }}
+        %form.m-b-3(ng-submit="teams_ctrl.save()"
+                    name="teams_ctrl.form"
+                    novalidate="true")
+          .admin-input__wrap
+            %label.admin-input__label(for="#{I18n.t('admin.company.teams.name').parameterize}")
+              = I18n.t('admin.company.teams.name')
+            %input.admin-input__input(id="#{I18n.t('admin.company.teams.name').parameterize}"
+                                      type="text"
+                                      name="name"
+                                      ng-model="teams_ctrl.in_edit.name")
+            %p.admin-input__hint.in-red-400
+              = I18n.t('validation.cant_be_blank')
+
+          .admin-input__wrap
+            %label.admin-input__label(for="#{I18n.t('admin.company.teams.owner').parameterize}")
+              = I18n.t('admin.company.teams.owner')
+            .admin-input__wrap
+              %ui-select.main-select-search(theme="selectize"
+                                            data-qa-id="company-teams-owner"
+                                            on-select="teams_ctrl.selectOwner($select.selected)"
+                                            ng-model="teams_ctrl.in_edit.owner")
+                %ui-select-match(placeholder="#{I18n.t('admin.company.teams.search_name_email')}")
+                  {{ $select.selected.first_name }} {{ $select.selected.last_name }}
+                  %span(ng-if="$select.selected" ng-click="teams_ctrl.clearOwner($event)" class="clear-dropdown")
+                    ×
+                %ui-select-choices(refresh="teams_ctrl.searchOwner($select)"
+                                   refresh-delay="500"
+                                   ng-class="{ 'dropdown-empty': !$select.users.length }"
+                                   repeat="user in $select.users")
+                  %span
+                    {{ ::user.first_name }} {{ ::user.last_name }}
+
+          .admin-input__wrap
+            %label.admin-input__label(for="#{I18n.t('admin.company.teams.description').parameterize}")
+              = I18n.t('admin.company.teams.description')
+            %textarea.admin-input__input(rows="7"
+                                         name="description"
+                                         id="#{I18n.t('admin.company.teams.description').parameterize}"
+                                         ng-model="teams_ctrl.in_edit.description")
+          .text-xs-center
+            %p.a-company__text.font-semi-bold
+              %span>= I18n.t('admin.company.teams.total_members')
+              \:
+              %span
+                {{ teams_ctrl.in_edit.users.length }}
+          %ul.a-team-users-list
+            %li(ng-repeat="user in teams_ctrl.in_edit.users")
+              {{ ::user.first_name }} {{ ::user.last_name }}
+              %i.a-company__remove-item-icon.icon.icon-cross(ng-click="teams_ctrl.removeMember(user)")
+          .m-b-3
+            .admin-input__wrap.m-b-5
+              %label.admin-input__label(for="#{I18n.t('admin.company.teams.add_member').parameterize}")
+                = I18n.t('admin.company.teams.add_member')
+              .admin-input__wrap.m-b-5
+                %ui-select.main-select-search(theme="selectize"
+                                              ng-model="teams_ctrl.user_for_selection"
+                                              data-qa-id="company-teams-members"
+                                              on-select="teams_ctrl.selectMember($select.selected)")
+                  %ui-select-match(placeholder="#{I18n.t('admin.company.teams.search_name_email')}")
+                    {{ $select.selected.first_name }} {{ $select.selected.last_name }}
+                  %ui-select-choices(refresh="teams_ctrl.searchMembers($select, teams_ctrl.in_edit.users)"
+                                     refresh-delay="500"
+                                     ng-class="{ 'dropdown-empty': !$select.users.length }"
+                                     repeat="user in $select.users")
+                    %span
+                      {{ ::user.first_name }} {{ ::user.last_name }}
+          .text-xs-center
+            %button.simple-btn.simple-btn--transp-blue-380.min-9(type="button"
+                                                                 ng-click="teams_ctrl.cancel()")
+              = I18n.t('admin.company.teams.cancel')
+            %button.simple-btn.simple-btn--blue-380.min-9(type="submit")
+              = I18n.t('admin.company.teams.save')

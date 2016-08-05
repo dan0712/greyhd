@@ -1,0 +1,6 @@
+%h3 List of stubs
+- @files.each do |key, values|
+  %h4= key
+  %ul
+    - values.each do |value|
+      %li= link_to value.last, value.join('/')

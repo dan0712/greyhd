@@ -1,0 +1,66 @@
+%aside.admin-nav
+  %ul
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-stats.font-24
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.dashboard')
+    %li.admin-nav__li.clearfix.admin-nav__li--active
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-user.font-24
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.people')
+        %i.admin-nav__li-triangle
+      %ul.admin-nav__li-subitems
+        %li
+          %a.admin-nav__li-subitem.admin-nav__li-subitem--active(href="#")
+            = t('admin.main_nav.onboard')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = t('admin.main_nav.manage')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = t('admin.main_nav.offboard')
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-briefcase.font-24
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.company')
+        %i.admin-nav__li-triangle
+      %ul.admin-nav__li-subitems
+        %li
+          %a.admin-nav__li-subitem.admin-nav__li-subitem--active(href="#")
+            = t('admin.main_nav.general')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = t('admin.main_nav.teams')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = t('admin.main_nav.locations')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = t('admin.main_nav.tasks')
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-grad-cap.font-21
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.training')
+        %i.admin-nav__li-triangle
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-folder.font-22
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.resources')
+        %i.admin-nav__li-triangle
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-file.font-27
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.billing')
+        %i.admin-nav__li-triangle
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-gear.font-24
+        %span.admin-nav__li-item-text
+          = t('admin.main_nav.integrations')
+        %i.admin-nav__li-triangle

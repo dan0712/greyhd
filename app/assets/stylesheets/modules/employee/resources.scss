@@ -1,0 +1,73 @@
+.gs-resources {
+  max-width: 70rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding-top: 2rem;
+}
+.gs-resources__text-sm {
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.55;
+  margin-bottom: 5rem;
+}
+.gs-resources__list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+.gs-resources__li {
+  display: flex;
+  flex-shrink: 0;
+  flex-direction: column;
+  justify-content: center;
+  position: relative;
+  width: 21rem;
+  height: 21rem;
+  color: white;
+  background-color: $grey-450;
+  text-align: center;
+  border-radius: 0.2rem;
+  overflow: hidden;
+  cursor: pointer;
+  padding: 0.3rem 1.5rem 0;
+  margin: 0 0.5rem 3rem;
+  &:before {
+    content: '';
+    display: block;
+    width: 100%;
+    height: 100%;
+    position: absolute;
+    left: 0;
+    top: 0;
+    background-color: rgba(#4a4a4a, 0.3);
+  }
+  &:hover .gs-resources__li-bg {
+    transform: scale(1.1);
+  }
+}
+.gs-resources__li-bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-size: cover;
+  background-position: center;
+  will-change: transform;
+  transition: 0.6s transform ease;
+}
+.gs-resources__li-content {
+  position: relative;
+}
+.gs-resources__li-title {
+  display: block;
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.3rem;
+}
+.gs-resources__li-text {
+  display: block;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}

@@ -1,0 +1,28 @@
+$text-colors: 'white'        #fff,
+              'black'        #000,
+              green-300      $green-300,
+              green-500      $green-500,
+              grey-080       $grey-080,
+              grey-100       $grey-100,
+              grey-150       $grey-150,
+              grey-200       $grey-200,
+              grey-250       $grey-250,
+              grey-280       $grey-280,
+              grey-300       $grey-300,
+              grey-500       $grey-500,
+              grey-600       $grey-600,
+              red-400        $red-400,
+              red-600        $red-600,
+              red-800        $red-800,
+              blue-200       $blue-200,
+              blue-400       $blue-400,
+              navy-700       $navy-700;
+
+@each $color in $text-colors {
+  .in-#{nth($color, 1)} {
+    color: nth($color, 2) !important;
+  }
+  .bg-#{nth($color, 1)} {
+    background-color: nth($color, 2) !important;
+  }
+}

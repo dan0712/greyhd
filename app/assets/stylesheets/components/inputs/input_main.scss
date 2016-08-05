@@ -1,0 +1,37 @@
+.main-input__label {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 1.2rem;
+}
+.main-input__wrap {
+  position: relative;
+  text-align: left;
+  margin-bottom: 1.3rem;
+  &.with-error .main-input__hint {
+    display: block;
+  }
+}
+.main-input {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  font-family: inherit;
+  color: black;
+  border: 0.1rem solid $grey-280;
+  border-radius: 0.3rem;
+  box-shadow: inset 0 0.1rem 0.3rem rgba(black, 0.5);
+  padding: 1rem 0.8rem;
+  transition: 0.1s border-color ease;
+  @include input-placeholder-text {
+    color: $grey-150;
+  }
+  &:hover, &:focus {
+    outline: none;
+  }
+}
+.main-input__hint {
+  display: none;
+  font-size: 1.2rem;
+  margin-top: 0.4rem;
+  margin-bottom: 1rem;
+}

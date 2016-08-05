@@ -1,0 +1,28 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        %div
+          %h2.gs-about__title
+            = I18n.t('wrap_up.congrats')
+        .gs-congrats__text
+          %p.gs-about__text
+            = I18n.t('wrap_up.all_set')
+            %span.font-bold
+            May 2, 2016!
+          %p.gs-about__text
+            = I18n.t('wrap_up.learn_more')
+            greyhd
+            = I18n.t('wrap_up.before_start')
+            greyhd
+            = I18n.t('wrap_up.employee_platform')
+          %p.gs-about__text
+            = I18n.t('wrap_up.platform')
+            greyhd's
+            = I18n.t('wrap_up.hub')
+            greyhd
+            = I18n.t('wrap_up.access_training')
+
+        .text-xs-center
+          %button.main-btn.main-btn--navy-600.m-b-3(type="button")
+            = I18n.t('wrap_up.ex_platform')

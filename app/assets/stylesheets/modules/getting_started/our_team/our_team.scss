@@ -1,0 +1,199 @@
+.gs-team__tabs-wrap {
+  position: relative;
+  margin-bottom: 3rem;
+}
+.gs-team__tabs {
+  .tab-pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  >.nav-tabs {
+    display: table;
+    width: 100%;
+    table-layout: fixed;
+    margin-bottom: 0.5rem;
+  }
+}
+.gs-team__tabs-modal {
+  position: absolute;
+  z-index: 10;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(black, 0.5);
+  overflow-y: auto;
+  padding: 5rem 2rem 0;
+}
+.gs-team__tabs-modal-box {
+  position: relative;
+  max-width: 35rem;
+  margin: 0 auto 2rem;
+  text-align: center;
+  background-color: $grey-100;
+  border-radius: 1.7rem;
+  box-shadow: 0 0.2rem 0.4rem rgba(black, 0.5);
+  padding: 3rem 4rem 1rem;
+}
+.gs-team__tabs-modal-box-close {
+  position: absolute;
+  top: 1rem;
+  right: 1rem;
+  font-size: 2rem;
+  color: $grey-280;
+  cursor: pointer;
+  padding: 0.5rem;
+  &:hover {
+    color: darken($grey-280, 20%);
+  }
+}
+.gs-team__tabs-modal-member-img {
+  width: 11.2rem;
+  height: 11.2rem;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 2rem;
+}
+.gs-team__tabs-modal-member-head-info {
+  margin-bottom: 2rem;
+}
+.gs-team__tabs-modal-member-title {
+  font-size: 2rem;
+  font-weight: 600;
+  margin-bottom: 0.8rem;
+}
+.gs-team__tabs-modal-member-position {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 0.8rem;
+}
+.gs-team__tabs-modal-member-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.gs-team__tab {
+  display: table-cell;
+  position: relative;
+  vertical-align: middle;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0.2rem;
+    right: 0.2rem;
+    bottom: 0;
+    background-color: $grey-080;
+    border: 0.1rem solid $grey-150;
+    border-top-left-radius: 0.3rem;
+    border-top-right-radius: 0.3rem;
+    transform: perspective(10rem) rotateX(5deg);
+  }
+  &.active {
+    z-index: 1;
+    .nav-link {
+      color: black;
+      font-weight: 600;
+    }
+    &:before {
+      background-color: white;
+      border-bottom-color: white;
+    }
+  }
+  .nav-link {
+    display: block;
+    position: relative;
+    line-height: 1.4;
+    padding: 1rem 1.5rem 0.8rem;
+  }
+}
+.gs-team__tab-head-item {
+  display: flex;
+  align-items: center;
+}
+.gs-team__tab-head-icon {
+  flex-shrink: 0;
+  font-size: 1.8rem;
+  color: $green-300;
+  margin-right: 0.8rem;
+}
+.gs-team__tab-head-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: black;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+  overflow: hidden;
+}
+.gs-team__tab-pane-head {
+  position: relative;
+  background-color: $grey-100;
+  text-align: center;
+  padding: 2rem 6rem;
+}
+.gs-team__tab-pane-head-arrow {
+  display: inline-block;
+  position: absolute;
+  top: 2rem;
+  font-size: 3.5rem;
+  color: $green-300;
+  cursor: pointer;
+  &:hover {
+    color: lighten($green-300, 10%);
+  }
+}
+.gs-team__tab-pane-head-arrow--left {
+  left: 3rem;
+}
+.gs-team__tab-pane-head-arrow--right {
+  right: 3rem;
+}
+.gs-team__tab-pane-head-title {
+  font-size: 2.2rem;
+  font-weight: 600;
+  margin-bottom: 2.5rem;
+}
+.gs-team__tab-pane-head-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.gs-team__tab-pane-content {
+  max-height: 56rem;
+  background-color: #eee;
+  overflow-y: auto;
+}
+.gs-team__tab-pane-people-list {
+  text-align: center;
+  padding: 3rem 2rem 0;
+}
+.gs-team__tab-pane-people-li {
+  display: inline-block;
+  vertical-align: top;
+  width: 9rem;
+  text-align: center;
+  margin: 0 1rem 2rem;
+}
+.gs-team__tab-pane-people-li-img-wrap {
+  width: 7.6rem;
+  height: 7.6rem;
+  text-align: center;
+  background-color: white;
+  box-shadow: 0 0.2rem 0.4rem rgba(black, 0.5);
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto 0.8rem;
+}
+.gs-team__tab-pane-people-li-name {
+  font-size: 1rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0;
+}
+.gs-team__tab-pane-people-li-positions {
+  font-size: 1rem;
+  font-weight: 300;
+}

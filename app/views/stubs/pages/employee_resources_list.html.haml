@@ -1,0 +1,48 @@
+.container
+  .row
+    .col-xs-12
+      .gs-resources
+        %ul.gs-resources__breadcrumbs
+          %li.gs-resources__breadcrumb
+            = I18n.t('employee.resources.title')
+          %li.gs-resources__breadcrumb.gs-resources__breadcrumb--current.in-green-500
+            Human Resources
+        %h1.gs-resources__resource-title
+          Human Resources
+        .gs-resources__table-wrap
+          %table.gs-resources__table
+            %colgroup
+              %col(style="width: 40%;")
+              %col(style="width: 15%;")
+              %col(style="width: 28%;")
+              %col(style="width: 17%;")
+            %tr
+              %td.gs-resources__table-th
+                %p.gs-resources__table-th-text
+                  = I18n.t('employee.resources.doc_list.title')
+              %td.gs-resources__table-th
+                %p.gs-resources__table-th-text
+                  = I18n.t('employee.resources.doc_list.owner')
+              %td.gs-resources__table-th
+                %p.gs-resources__table-th-text
+                  = I18n.t('employee.resources.doc_list.tags')
+              %td.gs-resources__table-th
+                %p.gs-resources__table-th-text
+                  = I18n.t('employee.resources.doc_list.last_modified')
+            - 11.times do
+              %tr.gs-resources__table-tr
+                %td.gs-resources__table-td
+                  %p.gs-resources__table-td-text
+                    SalesForce.com: Creating Custom Reports
+                %td.gs-resources__table-td
+                  %p.gs-resources__table-td-text
+                    Ross Daniels
+                %td.gs-resources__table-td
+                  %p.gs-resources__table-td-text
+                    Salesforce, Admissions, Training
+                %td.gs-resources__table-td
+                  %p.gs-resources__table-td-text
+                    29-Feb-16
+        .text-xs-center
+          %button.main-btn.main-btn--navy-600(type="button")
+            = I18n.t('employee.resources.return_to_resources')

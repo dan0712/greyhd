@@ -1,0 +1,429 @@
+.a-people__panel
+  %uib-tabset.a-people__onboard(active="active")
+    %uib-tab(index="0")
+      %uib-tab-heading
+        .a-people__step-content.a-people__step-content--complete
+          %span.a-people__step-text
+            = t('people.steps.create_profile')
+          %i.a-people__step-icon.icon.icon-checkmark
+
+      .a-people__content
+        %h1.a-main__title
+          = t('admin.people.create_profile.title')
+        .m-b-2.clearfix
+          %p.a-people__text
+            = t('admin.people.create_profile.lets_start')
+        .m-b-3
+          .flex-row.flex-items-xs-between.max-42
+            .max-20.flex-grow
+              %label.admin-input__label(for="#{t('admin.people.create_profile.first_name').parameterize}")
+                = t('admin.people.create_profile.first_name')
+              .admin-input__wrap
+                %input.admin-input__input(id="#{t('admin.people.create_profile.first_name').parameterize}"
+                                          type="text" name="fname"
+                                          autocomplete="given-name")
+                %p.admin-input__hint.in-red-400
+                  = t('admin.people.create_profile.first_name_req')
+            .max-20.flex-grow
+              %label.admin-input__label(for="#{t('admin.people.create_profile.last_name').parameterize}")
+                = t('admin.people.create_profile.last_name')
+              .admin-input__wrap
+                %input.admin-input__input(id="#{t('admin.people.create_profile.last_name').parameterize}"
+                                          type="text" name="lname"
+                                          autocomplete="family-name")
+                %p.admin-input__hint.in-red-400
+                  = t('admin.people.create_profile.last_name_req')
+          .max-30
+            %label.admin-input__label(for="#{t('admin.people.create_profile.personal_email').parameterize}")
+              = t('admin.people.create_profile.personal_email')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.people.create_profile.personal_email').parameterize}"
+                                        type="text" name="email" autocomplete="email")
+              %p.admin-input__hint.in-red-400
+                = t('admin.people.create_profile.personal_email_req')
+
+          %label.admin-input__label(for="#{t('admin.people.create_profile.company_email').parameterize}")
+            = t('admin.people.create_profile.company_email')
+          .flex-row
+            .max-30.flex-grow.m-r-1
+              .admin-input__wrap
+                %input.admin-input__input(id="#{t('admin.people.create_profile.company_email').parameterize}"
+                                          type="text" name="email" autocomplete="email")
+                %p.admin-input__hint.in-red-400
+                  = t('admin.people.create_profile.company_email_req')
+            .a-people__email-avail
+              %i.a-people__email-avail-icon.icon.icon-check-rounded
+              %span.a-people__email-avail-text
+                = t('admin.people.create_profile.email_avail')
+          .max-20
+            %label.admin-input__label
+              = t('admin.people.create_profile.start_date')
+            .admin-input__wrap(ng-controller="dateCtrl")
+              %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                        uib-datepicker-popup
+                                        ng-model="dt"
+                                        is-open="popup1.opened"
+                                        datepicker-options="dateOptions"
+                                        show-button-bar="false"
+                                        ng-required="true"
+                                        id="#{t('admin.people.create_profile.status').parameterize}")
+              %span.admin-input__cal-btn(ng-click="open1()")
+                %i.icon.icon-calendar
+              %p.admin-input__hint.in-red-400
+                = t('admin.people.create_profile.personal_email_req')
+
+          .flex-row.flex-items-xs-between.max-42
+            .max-20.flex-grow
+              %label.admin-input__label
+                = t('admin.people.create_profile.location')
+              .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+                %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                  %ui-select-match(placeholder="Select location...")
+                    {{$select.selected.name}}
+                  %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                    %span(ng-bind-html="country.name | highlight: $select.search")
+                    %small(ng-bind-html="country.code | highlight: $select.search")
+                %p.admin-input__hint.in-red-400
+                  = t('admin.people.create_profile.location_req')
+            .max-20.flex-grow
+              %label.admin-input__label
+                = t('admin.people.create_profile.team')
+              .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+                %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                  %ui-select-match(placeholder="Select team...")
+                    {{$select.selected.name}}
+                  %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                    %span(ng-bind-html="country.name | highlight: $select.search")
+                    %small(ng-bind-html="country.code | highlight: $select.search")
+                %p.admin-input__hint.in-red-400
+                  = t('admin.people.create_profile.team_req')
+
+          .max-20
+            %label.admin-input__label
+              = t('admin.people.create_profile.manager')
+            .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+              %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                %ui-select-match(placeholder="Select manager...")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                  %span(ng-bind-html="country.name | highlight: $select.search")
+                  %small(ng-bind-html="country.code | highlight: $select.search")
+
+              %p.admin-input__hint.in-red-400
+                = t('admin.people.create_profile.manager_req')
+          .max-20
+            %label.admin-input__label
+              = t('admin.people.create_profile.status')
+            .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+              %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                %ui-select-match(placeholder="Select status...")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                  %span(ng-bind-html="country.name | highlight: $select.search")
+                  %small(ng-bind-html="country.code | highlight: $select.search")
+
+              %p.admin-input__hint.in-red-400
+                = t('admin.people.create_profile.manager_req')
+
+          %div
+            %label.admin-input__label
+              = t('admin.people.create_profile.packet')
+            .a-people__tabs(ng-controller="TabsCtrl")
+              %uib-tabset(active="active")
+                %uib-tab.a-people__tab(index="0" heading="#{t('admin.people.create_profile.tax')} (3)")
+                  .a-people__packet-pane
+                    %ul.a-people__packet-doc-list
+                      - 3.times do
+                        %li.a-people__packet-doc-li
+                          = image_tag 'general/doc.svg', class: 'a-people__packet-doc-li-img'
+                          %p.a-people__packet-doc-li-text
+                            W-4
+                %uib-tab.a-people__tab(index="1" heading="#{t('admin.people.create_profile.confidentiality')} (2)")
+                  .a-people__packet-pane
+                    Tab Content 2
+                %uib-tab.a-people__tab(index="2" heading="#{t('admin.people.create_profile.policies')} (3)")
+                  .a-people__packet-pane
+                    Tab Content 3
+                %uib-tab.a-people__tab(index="3" heading="#{t('admin.people.create_profile.policies')} (3)")
+                  .a-people__packet-pane
+                    Tab Content 4
+
+            %button.simple-btn.simple-btn--blue-380.m-r-2.min-11(type="button")
+              = t('admin.people.create_profile.edit_packets')
+            %button.simple-btn.simple-btn--blue-380.m-r-2.min-11(type="button")
+              = t('admin.people.create_profile.edit_docs')
+        %div
+          %h2.a-main__title-secondary
+            = t('admin.people.create_profile.additional')
+
+          .max-30
+            %label.admin-input__label(for="#{t('admin.people.create_profile.edu').parameterize}")
+              = t('admin.people.create_profile.edu')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.people.create_profile.edu').parameterize}"
+                                        type="text")
+          .max-30
+            %label.admin-input__label(for="#{t('admin.people.create_profile.allergies').parameterize}")
+              = t('admin.people.create_profile.allergies')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.people.create_profile.allergies').parameterize}"
+                                        type="text")
+          .max-30
+            %label.admin-input__label(for="#{t('admin.people.create_profile.emerge_contact').parameterize}")
+              = t('admin.people.create_profile.emerge_contact')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.people.create_profile.emerge_contact').parameterize}"
+                                        type="text")
+          .max-30
+            %label.admin-input__label(for="#{t('admin.people.create_profile.emerge_contact_number').parameterize}")
+              = t('admin.people.create_profile.emerge_contact_number')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.people.create_profile.emerge_contact_number').parameterize}"
+                                        type="text")
+          %div
+            .a-people__add-item.a-add-item-btn
+              %i.a-add-item-btn-icon.icon.icon-plus-rounded
+              %span.a-add-item-btn-text
+                = t('admin.people.create_profile.add_new')
+          %button.simple-btn.simple-btn--blue-380.min-11(type="button")
+            = t('admin.people.create_profile.continue')
+    %uib-tab(index="1")
+      %uib-tab-heading
+        .a-people__step-content.a-people__step-content--active
+          %span.a-people__step-text
+            = t('people.steps.assign_tasks')
+          %i.a-people__step-icon.icon.icon-checkmark
+      .a-people__content
+        %h1.a-main__title
+          = t('admin.people.tasks.assign_tasks')
+        .m-b-2.clearfix
+          %p.a-people__text
+            = t('admin.people.tasks.description')
+        .a-people__ws-head
+          %h2.a-people__ws-head-title
+            = t('admin.people.tasks.workstreams')
+          .a-people__ws-head-add
+            %i.a-people__ws-head-add-icon.icon.icon-plus-rounded
+            %span.a-people__ws-head-add-text
+              = t('admin.people.tasks.workstream_add')
+
+        .a-people__ws-box.clearfix
+          .a-people__ws-box-head
+            %p.a-people__ws-box-head-info
+              %span.a-people__ws-box-head-text
+                %span>= t('admin.people.tasks.workstreams_total')
+                \:
+                %span.font-semi-bold 7
+                %span
+                  |
+                %span>= t('admin.people.tasks.tasks_total')
+                \:
+                %span.font-semi-bold 45
+
+            %div
+              .a-people__ws-box-head-btn
+                %i.a-people__ws-box-head-btn-icon.icon.icon-sort
+                %span.a-people__ws-box-head-btn-text
+                  = t('admin.people.tasks.reorder')
+              .a-people__ws-box-head-btn
+                %i.a-people__ws-box-head-btn-icon.icon.icon-play
+                %span.a-people__ws-box-head-btn-text
+                  = t('admin.people.tasks.show_all')
+
+          .a-people__ws-list(ng-controller="AccordionCtrl")
+            %uib-accordion(close-others="oneAtATime")
+              - 4.times do
+                %uib-accordion-group
+                  %uib-accordion-heading
+                    %span.a-people__ws-li-head
+                      %span.inline-flex
+                        %i.a-people__ws-li-head-arrow
+                        %span.a-people__ws-li-head-text
+                          Training
+                      %span
+                        %span.a-people__ws-li-head-text
+                          %span 3
+                          = t('admin.people.tasks.tasks')
+
+                        -# %i.pull-right.glyphicon(ng-class="{'glyphicon-chevron-down': status.isCustomHeaderOpen, 'glyphicon-chevron-right': !status.isCustomHeaderOpen}")
+                  .a-people__ws-li-content
+                    %ul.a-people__ws-li-checklist
+                      - 4.times do
+                        %li
+                          %label.a-people__ws-li-check
+                            .a-people__ws-li-check-wrap
+                              %input.a-people__ws-li-check-icon(type="checkbox")
+                              %span.a-people__ws-li-check-text
+                                One-on-One with Manager
+                            .a-people__ws-li-check-pic-wrap
+                              = image_tag 'temp/welcome_team.jpg', class: 'a-people__ws-li-check-pic'
+                    .a-people__ws-li-checklist-actns
+                      %span.a-people__ws-li-checklist-actn
+                        %i.icon.icon-plus
+                        = t('admin.people.tasks.add_task')
+                      %span.a-people__ws-li-checklist-actn
+                        %i.icon.icon-bin
+                        = t('admin.people.tasks.del_list')
+        %h2.a-main__title-secondary.m-b-1
+          = t('admin.people.tasks.assignees')
+        %ul.a-people__assign-list
+          - 4.times do
+            %li.a-people__assign-li
+              .a-people__assign-li-img
+                = image_tag 'temp/welcome_team.jpg', class: 'img-inherit'
+              %span.a-people__assign-li-count
+                10
+        %button.simple-btn.simple-btn--blue-380.min-11(type="button")
+          = t('admin.people.create_profile.continue')
+    %uib-tab(index="2")
+      Static content3
+      %uib-tab-heading
+        .a-people__step-content
+          %span.a-people__step-text
+            = t('people.steps.assign_training')
+          %i.a-people__step-icon.icon.icon-checkmark
+    %uib-tab(index="3")
+      %uib-tab-heading
+        .a-people__step-content
+          %span.a-people__step-text
+            = t('people.steps.complete')
+          %i.a-people__step-icon.icon.icon-checkmark
+      .a-people__content
+        %h1.a-main__title
+          = t('admin.people.complete.title')
+        .m-b-2.clearfix
+          %p.a-people__text
+            = t('admin.people.complete.lets_complete')
+
+        %section.a-people__complete-list.clearfix
+          %table.a-people__complete-top-table
+            %colgroup
+              %col(width="38%")
+              %col(width="62%")
+            %tr
+              %td.a-people__complete-top-td
+                %p.a-people__complete-top-table-title
+                  = t('admin.people.complete.head_sections.name')
+                %p.a-people__complete-top-table-text
+                  Nick Newton
+              %td.a-people__complete-top-td
+                %p.a-people__complete-top-table-title
+                  = t('admin.people.complete.head_sections.title')
+                %p.a-people__complete-top-table-text
+                  Admissions Producer
+            %tr
+              %td.a-people__complete-top-td
+                %p.a-people__complete-top-table-title
+                  = t('admin.people.complete.head_sections.company_email')
+                %p.a-people__complete-top-table-text
+                  nick@ga.co
+              %td.a-people__complete-top-td
+                %p.a-people__complete-top-table-title
+                  = t('admin.people.complete.head_sections.start_date')
+                %p.a-people__complete-top-table-text
+                  May 02, 2016
+
+          %label.admin-input__label(for="#{t('admin.people.create_profile.emerge_contact_number').parameterize}")
+            = t('admin.people.create_profile.emerge_contact_number')
+          .admin-input__wrap
+            %textarea.admin-input__input(rows="6")
+          %label.admin-input__label(for="#{t('admin.people.create_profile.emerge_contact_number').parameterize}")
+            = t('admin.people.create_profile.emerge_contact_number')
+          .admin-input__wrap
+            %textarea.admin-input__input(rows="6")
+
+          .a-people__complete-table-wrap
+            %table.a-people__complete-table
+              %colgroup
+                %col(width="48%")
+                %col(width="35%")
+                %col(width="17%")
+              %caption
+                %h2.a-people__complete-table-caption
+                  = t('admin.people.complete.pre_start_training')
+              %thead
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.title')
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.estimated')
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.due_date')
+              - 3.times do
+                %tr
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      PRO TIPS: How to be Successful in your First Month at GA (video)
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      8 minutes
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      May 02, 2016
+
+          .a-people__complete-table-wrap
+            %table.a-people__complete-table
+              %colgroup
+                %col(width="48%")
+                %col(width="35%")
+                %col(width="17%")
+              %caption
+                %h2.a-people__complete-table-caption
+                  = t('admin.people.complete.onboarding_training')
+              %thead
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.title')
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.estimated')
+                %th.a-people__complete-table-th
+                  %p.a-people__complete-table-text.font-semi-bold
+                    = t('admin.people.complete.training_sections.due_date')
+              - 3.times do
+                %tr
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      Enterprise, Circuits, PT Courses vs Immersions – What’s the Difference? (video)
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      8 minutes
+                  %td.a-people__complete-table-td
+                    %p.a-people__complete-table-text
+                      May 02, 2016
+
+          .a-people__complete-notifications
+            .m-r-3.no-shrink
+              %p.a-people__complete-notifications-title
+                = t('admin.people.complete.notification_email')
+              %p.a-people__complete-notifications-text
+                %span April 26, 2016
+                (Seven #{t('admin.people.complete.days_before')})
+
+            .p-t-5.no-shrink(ng-controller="ModalCtrl")
+              %script(type="text/ng-template" id="myModalContent.html")
+                .modal-header
+                  %h3.modal-title
+                    Preview Modal
+                .modal-body
+
+                .modal-footer
+                  %button.btn.btn-primary(type="button" ng-click="ok()")
+                    OK
+                  %button.btn.btn-warning(type="button" ng-click="cancel()")
+                    Cancel
+              %button.simple-btn.simple-btn--blue-380.min-11(type="button" ng-click="open('lg')")
+                = t('admin.people.complete.preview')
+
+        %div
+          %label.a-people__complete-checkbox-wrap
+            %input.a-people__complete-checkbox(type="checkbox")
+            %span.a-people__complete-checkbox-text
+              = t('admin.people.complete.confirm_info')
+
+        %button.simple-btn.simple-btn--blue-380.min-11.disabled(type="button" uib-tooltip="#{t('admin.people.complete.finish_tooltip')}")
+          = t('admin.people.complete.finish')
+
+  -# = render 'stubs/partials/admin/people/onboard_steps'

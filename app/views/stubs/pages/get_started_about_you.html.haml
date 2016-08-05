@@ -1,0 +1,195 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        %div
+          %uib-tabset.gs-about(active="active")
+            %uib-tab(index="0")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.introduction')
+              %section.gs-about__section
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.introduction')
+                .m-b-3
+                  %p.gs-about__text
+                    = I18n.t('about_you.time_for_paperwork')
+                  %p.gs-about__text
+                    = I18n.t('about_you.your')
+                    %span.font-bold
+                      = I18n.t('about_you.personal_profile_info')
+                    = I18n.t('about_you.private_team')
+                %button.main-btn.main-btn--navy-600.min-13(type="button")
+                  = I18n.t('about_you.next')
+
+            %uib-tab(index="1")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.personal_info')
+              %section.gs-about__section
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.personal_info')
+                .gs-about__personal-info
+                  .gs-about__personal-info-left
+                    %label.main-input__label(for="#{I18n.t('about_you.first_name').parameterize}")
+                      = I18n.t('about_you.first_name')
+                    .main-input__wrap.m-b-2
+                      %input.main-input(type="text" id="#{I18n.t('about_you.first_name').parameterize}"
+                                        placeholder="#{I18n.t('about_you.first_name_placeholder')}")
+                      %p.main-input__hint
+                        = I18n.t('validation.cant_be_blank')
+                    %label.main-input__label(for="#{I18n.t('about_you.last_name').parameterize}")
+                      = I18n.t('about_you.last_name')
+                    .main-input__wrap.m-b-2
+                      %input.main-input(type="text" id="#{I18n.t('about_you.last_name').parameterize}"
+                                        placeholder="#{I18n.t('about_you.last_name_placeholder')}")
+                      %p.main-input__hint
+                        = I18n.t('validation.cant_be_blank')
+                    %label.main-input__label(for="#{I18n.t('about_you.company_email').parameterize}")
+                      = I18n.t('about_you.company_email')
+                    .main-input__wrap.m-b-2
+                      %input.main-input(type="email" id="#{I18n.t('about_you.company_email').parameterize}"
+                                        placeholder="#{I18n.t('about_you.company_email_placeholder')}")
+                      %p.main-input__hint
+                        = I18n.t('validation.cant_be_blank')
+                    %label.main-input__label(for="#{I18n.t('about_you.personal_email').parameterize}")
+                      = I18n.t('about_you.personal_email')
+                    .main-input__wrap.m-b-3
+                      %input.main-input(type="email" id="#{I18n.t('about_you.personal_email').parameterize}"
+                                        placeholder="#{I18n.t('about_you.personal_email_placeholder')}")
+                      %p.main-input__hint
+                        = I18n.t('validation.cant_be_blank')
+                    %button.main-btn.main-btn--navy-600.min-13(type="button")
+                      = I18n.t('about_you.next')
+
+                  .gs-about__personal-info-right
+                    %label.main-input__label
+                      = I18n.t('about_you.profile_photo')
+                    .gs-about__photo-wrap
+                      .gs-about__photo
+                        = image_tag 'fallback/default_profile_image.png', class: 'img-inherit', alt: ''
+                      %i.gs-about__photo-icon.icon.icon-camera
+
+
+            %uib-tab(index="2")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.profile_info')
+              %section.max-44
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.profile_info')
+                %label.main-input__label(for="#{I18n.t('about_you.about_you').parameterize}")
+                  = I18n.t('about_you.about_you')
+                .main-input__wrap.m-b-2
+                  %textarea.main-input(rows="8" id="#{I18n.t('about_you.about_you').parameterize}")
+                  %p.main-input__hint
+                    = I18n.t('validation.cant_be_blank')
+                %label.main-input__label(for="#{I18n.t('about_you.facebook').parameterize}")
+                  = I18n.t('about_you.facebook')
+                .main-input__wrap.m-b-2
+                  %input.main-input(type="text" id="#{I18n.t('about_you.facebook').parameterize}")
+                %label.main-input__label(for="#{I18n.t('about_you.twitter').parameterize}")
+                  = I18n.t('about_you.twitter')
+                .main-input__wrap.m-b-2
+                  %input.main-input(type="text" id="#{I18n.t('about_you.twitter').parameterize}")
+                %label.main-input__label(for="#{I18n.t('about_you.linkedin').parameterize}")
+                  = I18n.t('about_you.linkedin')
+                .main-input__wrap.m-b-2
+                  %input.main-input(type="text" id="#{I18n.t('about_you.linkedin').parameterize}")
+                %label.main-input__label(for="#{I18n.t('about_you.github').parameterize}")
+                  = I18n.t('about_you.github')
+                .main-input__wrap.m-b-2
+                  %input.main-input(type="text" id="#{I18n.t('about_you.github').parameterize}")
+                %button.main-btn.main-btn--navy-600.min-13(type="button")
+                  = I18n.t('about_you.next')
+
+
+            %uib-tab(index="3")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.additional_info')
+              %section.max-44
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.additional_info')
+                %label.main-input__label(for="#{I18n.t('about_you.education').parameterize}")
+                  = I18n.t('about_you.education')
+                .main-input__wrap.m-b-2
+                  %input.main-input(id="#{I18n.t('about_you.education').parameterize}")
+                %label.main-input__label(for="#{I18n.t('about_you.food_allergies').parameterize}")
+                  = I18n.t('about_you.food_allergies')
+                .main-input__wrap.m-b-2
+                  %input.main-input(id="#{I18n.t('about_you.food_allergies').parameterize}")
+                %label.main-input__label
+                  = I18n.t('about_you.t_shirt_size')
+                .main-input__wrap.max-16.m-b-2
+                  %ui-select.client-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                    %ui-select-match(placeholder="Select location...")
+                      {{$select.selected.name}}
+                    %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                      %span(ng-bind-html="country.name | highlight: $select.search")
+                      %small(ng-bind-html="country.code | highlight: $select.search")
+                %label.main-input__label
+                  = I18n.t('about_you.computer_preference')
+                .main-input__wrap.max-16.m-b-3
+                  %ui-select.client-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                    %ui-select-match(placeholder="Select location...")
+                      {{$select.selected.name}}
+                    %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                      %span(ng-bind-html="country.name | highlight: $select.search")
+                      %small(ng-bind-html="country.code | highlight: $select.search")
+                %button.main-btn.main-btn--navy-600.min-13(type="button")
+                  = I18n.t('about_you.next')
+
+            %uib-tab(index="4")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.paperwork')
+              %section.max-52
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.paperwork')
+                %p.gs-about__text
+                  = I18n.t('about_you.require_paperwork')
+                %p.gs-about__text
+                  = I18n.t('about_you.retrieve_again')
+                %p.gs-about__text
+                  = I18n.t('about_you.open_doc')
+                .a-people__tabs.m-b-3
+                  %uib-tabset(active="active")
+                    %uib-tab.a-people__tab(index="0" heading="#{t('admin.people.create_profile.tax')} (3)")
+                      .a-people__packet-pane
+                        %ul.a-people__packet-doc-list
+                          - 3.times do
+                            %li.a-people__packet-doc-li
+                              %input.a-people__packet-doc-li-checkbox(type="checkbox" checked disabled)
+                              = image_tag 'general/doc.svg', class: 'a-people__packet-doc-li-img'
+                              %p.a-people__packet-doc-li-text
+                                W-4
+                    %uib-tab.a-people__tab(index="1" heading="#{t('admin.people.create_profile.confidentiality')} (2)")
+                      .a-people__packet-pane
+                        Tab Content 2
+                    %uib-tab.a-people__tab(index="2" heading="#{t('admin.people.create_profile.policies')} (3)")
+                      .a-people__packet-pane
+                        Tab Content 3
+                    %uib-tab.a-people__tab(index="3" heading="#{t('admin.people.create_profile.policies')} (3)")
+                      .a-people__packet-pane
+                        Tab Content 4
+                %button.main-btn.main-btn--navy-600.min-13(type="button")
+                  = I18n.t('about_you.next')
+
+            %uib-tab(index="5")
+              %uib-tab-heading
+                %span.gs-about__tab-text
+                  = I18n.t('about_you.finish')
+              %section.max-52
+                %div
+                  %h2.gs-about__title
+                    = I18n.t('about_you.finish')
+                %p.gs-about__text
+                  = I18n.t('about_you.congrats')
+                %button.main-btn.main-btn--navy-600.min-13(type="button")
+                  = I18n.t('about_you.wrap_up')

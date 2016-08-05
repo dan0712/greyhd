@@ -1,0 +1,61 @@
+.log-in__container
+  %div
+    .container
+      .row
+        .col-xs-12.text-xs-center
+          %a.log-in__logo.welcome-container__logo(href="#")
+            %img.welcome-container__logo-img(ng-src="{{login_ctrl.company.logo}}" alt="#{I18n.t('log_in.logo')}")
+        .col-xs-12
+          .log-in__sections
+            .log-in__form-wrap
+
+              %form.log-in__form(ng-submit="login_ctrl.login()" novalidate name="login_ctrl.form")
+                %h1.log-in__title
+                  = I18n.t('log_in.title')
+                .log-in__form-inputs
+
+                  .main-input__wrap
+                    %input.main-input(name="email" type="email" autocomplete="email"
+                                      placeholder="#{I18n.t('log_in.email')}" required="required"
+                                      ng-model="login_ctrl.login_data.email" has-errors="email")
+
+                    %show-errors(field="email")
+                      %p.main-input__hint.in-red-400(error="required")
+                        = I18n.t('log_in.email_req')
+                      %p.main-input__hint.in-red-400(error="email")
+                        = I18n.t('log_in.email_bad')
+
+                  .main-input__wrap
+                    %input.main-input(name="password" type="password" autocomplete="current-password"
+                                      placeholder="#{I18n.t('log_in.pass')}" required="required"
+                                      ng-model="login_ctrl.login_data.password")
+
+                    %show-errors(field="password")
+                      %p.main-input__hint.in-red-400(error="required")
+                        = I18n.t('log_in.pass_req')
+
+                  .text-xs-right
+                    %a.log-in__forgot(href="#")
+                      = I18n.t('log_in.forgot')
+
+                %p.text-xs-center.in-red-400
+                  {{ login_ctrl.form.server_response }}
+
+                .text-xs-center
+                  %input.log-in__submit.main-btn.main-btn--green-300.min-16(type="submit"
+                                                                            value="#{I18n.t('log_in.submit')}")
+
+                  %div
+                    %span.log-in__sign-up-hint
+                      = I18n.t('log_in.sign_up_hint')
+                    %a.log-in__sign-up.sec-btn.sec-btn--red-400(href="#")
+                      = I18n.t('log_in.sign_up')
+                  %div
+                    %a.log-in__to-home(href="#")
+                      = I18n.t('log_in.go_home')
+
+            .log-in__showcase-wrap.hidden-md-down
+              .log-in__showcase
+                %p.log-in__showcase-text
+                  = I18n.t('log_in.showcase')
+                = image_tag 'general/log_in_showcase.jpg', class: 'log-in__showcase-img'

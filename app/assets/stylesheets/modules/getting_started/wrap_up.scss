@@ -1,0 +1,55 @@
+.gs-wrap-up__list {
+  max-width: 50rem;
+  margin: 0 auto 10rem;
+}
+.gs-wrap-up__li {
+  display: flex;
+  background-color: $grey-100;
+  border: 0.1rem solid $grey-120;
+  transition-duration: 0.15s;
+  transition-property: transform, box-shadow;
+  transition-timing-function: ease-in-out;
+  cursor: pointer;
+  padding: 1.2rem 1rem 0.5rem;
+  margin-bottom: -0.1rem;
+  &:hover {
+    transform: scale(1.02);
+    box-shadow: 0 0.2rem 0.4rem rgba(black, 0.23);
+  }
+}
+.gs-wrap-up__li-check-wrap {
+  width: 4rem;
+  flex-shrink: 0;
+}
+.gs-wrap-up__li-check {
+  display: inline-block;
+  width: 2.2rem;
+  height: 2.2rem;
+  text-align: center;
+  font-size: 1.2rem;
+  line-height: 2rem;
+  color: $green-500;
+  background-color: white;
+  border: 0.1rem solid $grey-150;
+  margin-right: 1.5rem;
+  margin-bottom: 1.5rem;
+  &:before {
+    opacity: 0;
+  }
+}
+.gs-wrap-up__li-check--active:before {
+  opacity: 1;
+}
+.gs-wrap-up__li-title {
+  font-size: 1.4rem;
+  font-weight: 700;
+  margin-bottom: 0.5rem;
+}
+.gs-wrap-up__li-hint {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.gs-congrats__text {
+  margin-bottom: 6rem;
+}

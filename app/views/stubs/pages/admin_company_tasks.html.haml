@@ -1,0 +1,119 @@
+.a-company__panel
+  .max-40
+    %h1.a-main__title
+      = I18n.t('admin.company.tasks.title')
+    %p.a-company__text
+      = I18n.t('admin.company.tasks.title_hint')
+  .a-company__tasks-content
+    .a-company__ws-column.max-40
+      .a-company__ws-box.clearfix
+        .a-people__ws-box-head
+          %p.a-people__ws-box-head-info
+            %span.a-people__ws-box-head-text.font-10
+              %span>= I18n.t('admin.people.tasks.workstreams_total')
+              \:
+              %span.font-semi-bold 7
+              %span
+                |
+              %span>= I18n.t('admin.people.tasks.tasks_total')
+              \:
+              %span.font-semi-bold 96
+
+          %div
+            .a-people__ws-box-head-btn
+              %i.a-people__ws-box-head-btn-icon.icon.icon-sort
+              %span.a-people__ws-box-head-btn-text
+                = I18n.t('admin.company.tasks.reorder')
+            .a-people__ws-box-head-btn
+              %i.a-people__ws-box-head-btn-icon.icon.icon-play
+              %span.a-people__ws-box-head-btn-text
+                = I18n.t('admin.company.tasks.show_all')
+
+        %ul.a-workstreams-list
+          - 10.times do
+            %li.a-workstreams-li
+              %span.a-workstreams-li__text.m-r-2
+                Contractor Onboarding
+              %span.a-workstreams-li__text
+                10 Tasks
+        .a-add-item-btn.m-l-1
+          %i.a-add-item-btn-icon.icon.icon-plus-rounded
+          %span.a-add-item-btn-text
+            = I18n.t('admin.company.tasks.add_new_workstream')
+
+    .a-company__tasks-column
+      .a-company__tasks-head.clearfix
+        %h3.a-company__tasks-head-title
+          Marketing Onboarding
+      .a-company__tasks-head-actions
+        %p.a-people__ws-box-head-info
+          %span.a-people__ws-box-head-text.font-10
+            %span>= I18n.t('admin.people.tasks.tasks_total')
+            \:
+            %span.font-semi-bold 8
+
+        %div
+          .a-people__ws-box-head-btn
+            %i.a-people__ws-box-head-btn-icon.icon.icon-sort
+            %span.a-people__ws-box-head-btn-text
+              = I18n.t('admin.people.tasks.reorder')
+          .a-people__ws-box-head-btn
+            %i.a-people__ws-box-head-btn-icon.icon.icon-play
+            %span.a-people__ws-box-head-btn-text
+              = I18n.t('admin.people.tasks.show_all')
+
+      %ul.m-b-2
+        %li.a-company__tasks-li.a-company__tasks-li--active
+          .a-company__tasks-li-head
+            %h4.a-company__tasks-li-head-title
+              Enable Google Analytics Access
+            .a-company__tasks-li-head-actions
+              .a-company__tasks-li-head-author
+                = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+              %i.a-company__tasks-li-head-action.icon.icon-pencil
+              %i.a-company__tasks-li-head-action.icon.icon-bin
+
+          .a-company__tasks-li-content
+            %p.a-company__tasks-li-text
+              Allows the employee to access the company’s google analytics account which contains website traffic and usage statistics.
+            .m-b-1
+              %span.a-company__tasks-li-action
+                %i.a-company__tasks-li-action-icon.icon.icon-clip
+                %span.a-company__tasks-li-action-text
+                  = I18n.t('admin.company.tasks.attach')
+              %span.a-company__tasks-li-action
+                %i.a-company__tasks-li-action-icon.icon.icon-user-dark
+                %span.a-company__tasks-li-action-text
+                  = I18n.t('admin.company.tasks.assign')
+            .a-company__tasks-li-date
+              %span.a-company__tasks-li-date-text
+                = I18n.t('admin.company.tasks.due')
+              .a-company__tasks-li-date-date
+                %input.admin-input__input(type="number" value="7")
+              %span.a-company__tasks-li-date-text
+                = I18n.t('admin.company.tasks.days')
+              .a-company__tasks-li-date-select(ng-controller="SelectCtrl as ctrl")
+                %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                  %ui-select-match(placeholder="Select location...")
+                    {{$select.selected.name}}
+                  %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                    %span(ng-bind-html="country.name | highlight: $select.search")
+                    %small(ng-bind-html="country.code | highlight: $select.search")
+              %span.a-company__tasks-li-date-text
+                = I18n.t('admin.company.tasks.start_date')
+
+        - 10.times do
+          %li.a-company__tasks-li
+            .a-company__tasks-li-head
+              %h4.a-company__tasks-li-head-title
+                Enable Google Analytics Access
+              .a-company__tasks-li-head-actions
+                .a-company__tasks-li-head-author
+                  = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                %i.a-company__tasks-li-head-action.icon.icon-pencil
+                %i.a-company__tasks-li-head-action.icon.icon-bin
+
+      .a-add-item-btn.m-l-1.m-b-1
+        %i.a-add-item-btn-icon.icon.icon-plus-rounded
+        %span.a-add-item-btn-text
+          = I18n.t('admin.company.tasks.add_new_task')

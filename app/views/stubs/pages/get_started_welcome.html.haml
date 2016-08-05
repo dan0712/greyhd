@@ -1,0 +1,60 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        .gs-welcome__content-box
+          %h1.gs-welcome__title
+            =t('stubs.welcome.title_part_one')
+            %strong.font-semi-bold
+              Customer Success Manager
+            =t('stubs.welcome.title_part_two')
+            greyhd
+            !
+          %p.gs-welcome__hint
+            =t('stubs.welcome.hint')
+
+        %h2.gs-welcome__agenda-title
+          = t('stubs.welcome.agenda.title')
+        %ul.gs-welcome__agenda-list
+          - 5.times do
+            %li.gs-welcome__agenda-li
+              .gs-welcome__agenda-li-info
+                %h3.gs-welcome__agenda-li-title
+                  = t('stubs.welcome.agenda.item_title')
+                %p.gs-welcome__agenda-li-text
+                  = t('stubs.welcome.agenda.item_text')
+              .gs-welcome__agenda-li-img-box
+                = image_tag 'temp/agenda_team.jpg', class: 'gs-welcome__agenda-li-img'
+        .gs-welcome__content-box
+          %p.gs-welcome__text
+            = t('stubs.welcome.reach_out')
+        .gs-welcome__mentor.clearfix
+          .gs-welcome__mentor-photo
+            = image_tag 'temp/sarah_salem.jpg', class: 'gs-welcome__mentor-photo-img'
+          .gs-welcome__mentor-info
+            %p.gs-welcome__mentor-title
+              %span.gs-welcome__mentor-title-name
+                = t('stubs.welcome.mentor.name')
+                ,
+              = t('stubs.welcome.mentor.position')
+            %p.gs-welcome__mentor-about
+              = t('stubs.welcome.mentor.about')
+            %ul.gs-welcome__mentor-contacts
+              %li.gs-welcome__mentor-contact
+                %a.align-middle(href="mailto:#{t('stubs.welcome.mentor.email')}")
+                  = t('stubs.welcome.mentor.email')
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  = t('stubs.welcome.mentor.phone')
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  = t('stubs.welcome.mentor.city')
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  = t('stubs.welcome.mentor.from')
+        .gs-welcome__content-box
+          %p.gs-welcome__text
+            = t('stubs.welcome.what_next')
+        .m-b-3.text-xs-center
+          %a.main-btn.main-btn--green-300.min-12(href="#")
+            Next

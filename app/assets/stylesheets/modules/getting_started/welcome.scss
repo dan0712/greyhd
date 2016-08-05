@@ -1,0 +1,172 @@
+.gs-main-container {
+  padding-top: 0.5rem;
+}
+.gs-welcome__content-box {
+  margin-bottom: 4.5rem;
+}
+.gs-welcome__title {
+  font-size: 1.6rem;
+  font-weight: 300;
+  line-height: 1.5;
+  margin-bottom: 3rem;
+}
+.gs-welcome__hint {
+  font-size: 1.4rem;
+  line-height: 1.5;
+  margin-bottom: 2rem;
+}
+.gs-welcome__agenda-title {
+  display: inline-block;
+  font-size: 1.6rem;
+  font-weight: 600;
+  line-height: 1.4;
+  border-bottom: 0.1rem solid black;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
+  margin-bottom: 2rem;
+}
+.gs-welcome__agenda-list {
+  margin-bottom: 6rem;
+}
+.gs-welcome__agenda-li {
+  margin-bottom: 2rem;
+  &:not(:last-child) {
+    border-bottom: 0.1rem solid $grey-200;
+  }
+}
+.gs-welcome__agenda-li-title {
+  font-size: 1.8rem;
+  font-weight: 600;
+  color: $green-300;
+  margin-bottom: 1.5rem;
+}
+.gs-welcome__agenda-li-text {
+  font-size: 1.4rem;
+  margin-bottom: 2rem;
+}
+.gs-welcome__agenda-li-img-box {
+  margin-bottom: 1rem;
+}
+.gs-welcome__agenda-li-img {
+  max-width: 100%;
+  max-height: 30rem;
+}
+.gs-welcome__text {
+  font-weight: 300;
+  margin-bottom: 2rem;
+}
+.gs-welcome__mentor {
+  background-color: $grey-100;
+  border-radius: 1rem;
+  padding: 1rem 1rem 0;
+  margin-bottom: 3rem;
+}
+.gs-welcome__mentor-photo {
+  display: inline-block;
+  float: left;
+  width: 5rem;
+  height: 5rem;
+  background-color: white;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+}
+.gs-welcome__mentor-photo-img {
+  height: inherit;
+}
+.gs-welcome__mentor-title {
+  font-size: 1.5rem;
+  font-weight: 300;
+}
+.gs-welcome__mentor-title-name {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: 600;
+}
+.gs-welcome__mentor-about {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 1.5rem;
+}
+.gs-welcome__mentor-contacts {
+  margin-bottom: 1rem;
+}
+.gs-welcome__mentor-contact {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+  &:not(:last-child):after {
+    content: '';
+    display: inline-block;
+    vertical-align: middle;
+    width: 0.1rem;
+    height: 1.5rem;
+    background-color: black;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+
+@include media-breakpoint-up(lg) {
+  .gs-welcome__agenda-title {
+    margin-bottom: 3rem;
+  }
+  .gs-welcome__agenda-li {
+    display: flex;
+    padding-top: 3rem;
+    margin-bottom: 0;
+    &:nth-child(even) {
+      .gs-welcome__agenda-li-info {
+        order: 2;
+        padding-left: 3.5rem;
+        padding-right: 1rem;
+      }
+      .gs-welcome__agenda-li-img-box {
+        order: 1;
+      }
+    }
+  }
+  .gs-welcome__agenda-li-info {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    padding-top: 1.5rem;
+    padding-left: 1.5rem;
+    padding-right: 2rem;
+  }
+  .gs-welcome__agenda-li-img-box {
+    flex-basis: 50%;
+    flex-shrink: 0;
+    margin-bottom: 3rem;
+  }
+  .gs-welcome__agenda-li-img {
+    width: 100%;
+  }
+  .gs-welcome__mentor {
+    display: flex;
+    border-radius: 1.7rem;
+  }
+  .gs-welcome__mentor-photo {
+    flex-shrink: 0;
+    float: none;
+    width: 12.3rem;
+    height: 12.3rem;
+  }
+  .gs-welcome__mentor-info {
+    padding-right: 3rem;
+  }
+  .gs-welcome__mentor-title {
+    font-size: 2rem;
+    margin-bottom: 1.2rem;
+  }
+  .gs-welcome__mentor-title-name {
+    display: inline;
+    font-size: inherit;
+  }
+  .gs-welcome__mentor-about {
+    line-height: 1.4;
+    margin-bottom: 2rem;
+  }
+}

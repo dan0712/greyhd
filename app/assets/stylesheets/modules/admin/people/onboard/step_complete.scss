@@ -1,0 +1,82 @@
+.a-people__complete-list {
+  max-width: 56rem;
+  background-color: white;
+  padding: 1.5rem 1.5rem 0;
+  margin-bottom: 2.5rem;
+}
+.a-people__complete-top-table {
+  width: 100%;
+  margin-bottom: 2.5rem;
+}
+.a-people__complete-top-td {
+  padding: 0.4rem 1rem 0.4rem 0;
+}
+.a-people__complete-top-table-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.5rem;
+}
+.a-people__complete-top-table-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.a-people__complete-table-wrap {
+  padding-bottom: 1.2rem;
+  border-bottom: 0.1rem solid  $grey-200;
+  margin-bottom: 3.5rem;
+}
+.a-people__complete-table {
+  width: 100%;
+}
+.a-people__complete-table-caption {
+  font-size: 1.4rem;
+  font-weight: 600;
+  border-bottom: 0.1rem solid $grey-200;
+  padding-bottom: 1.2rem;
+  margin-bottom: 1rem;
+}
+.a-people__complete-table-th {
+  padding-top: 0.4rem;
+  padding-bottom: 0.8rem;
+}
+.a-people__complete-table-td {
+  vertical-align: top;
+  padding: 0.2rem 1rem 0.2rem 0;
+}
+.a-people__complete-table-text {
+  font-size: 1.2rem;
+  line-height: 1.25;
+  font-weight: 300;
+  margin-bottom: 0.5rem;
+}
+.a-people__complete-notifications {
+  display: flex;
+  margin-bottom: 2.5rem;
+}
+.a-people__complete-notifications-title {
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.a-people__complete-notifications-text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+}
+.a-people__complete-checkbox-wrap {
+  display: inline-flex;
+  margin-bottom: 4rem;
+}
+.a-people__complete-checkbox {
+  flex-shrink: 0;
+  width: 1.8rem;
+  height: 1.8rem;
+  margin-right: 1.2rem;
+}
+.a-people__complete-checkbox-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.25;
+  padding-top: 0.2rem;
+}

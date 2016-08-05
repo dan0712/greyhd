@@ -1,0 +1,238 @@
+.a-company__panel
+  .a-company__content
+    .a-company__head
+      %h1.a-main__title
+        = t('admin.company.general.title')
+      %p.a-company__text
+        = t('admin.company.general.title_hint')
+    %form.a-company__general-form
+      .max-42
+        .flex-row.flex-items-xs-between
+          .max-30.flex-grow
+            %label.admin-input__label(for="#{t('admin.company.general.company_name').parameterize}")
+              = t('admin.company.general.company_name')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.company.general.company_name').parameterize}"
+                                        type="text")
+              %p.admin-input__hint.in-red-400
+                = t('validation.cant_be_blank')
+          .max-10.flex-grow
+            %label.admin-input__label(for="#{t('admin.company.general.abbreviation').parameterize}")
+              = t('admin.company.general.abbreviation')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.company.general.abbreviation').parameterize}"
+                                        type="text")
+              %p.admin-input__hint.in-red-400
+                = t('validation.cant_be_blank')
+
+        .flex-row
+          .max-16.flex-grow.m-r-1
+            %label.admin-input__label(for="#{t('admin.company.general.greyhd_email').parameterize}")
+              = t('admin.company.general.greyhd_email')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{t('admin.company.general.greyhd_email').parameterize}"
+                                        type="text")
+              %p.admin-input__hint.in-red-400
+                = t('validation.min_2')
+          %p.a-company__general-sap-mail.a-company__text
+            = t('admin.company.general.greyhd_com')
+
+        .max-13
+          %label.admin-input__label
+            = t('admin.company.general.pri_color')
+          .admin-input__wrap
+            %color-picker(ng-model="primaryColor" color-picker-format="'hex'")
+            %p.admin-input__hint.in-red-400
+              = t('validation.cant_be_blank')
+
+        %div
+          %label.admin-input__label
+            = t('admin.company.general.switch_alerts')
+          .admin-input__wrap.p-t-5
+            %label.a-checkbox__wrap
+              %input.a-checkbox__checkbox.a-checkbox__checkbox--sm(type="checkbox")
+              %span.a-checkbox__text
+                = t('admin.company.general.send_alerts')
+                %i.icon.icon-info.m-l-5.in-grey-500.font-14(uib-tooltip="#{t('admin.company.general.switch_alerts_note')}")
+
+        .max-42
+          %label.admin-input__label
+            = t('admin.company.general.display_logo')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.display_logo_info')}")
+          .a-drag-drop
+            %p.a-drag-drop__title
+              = t('admin.company.general.drag_drop_upload')
+              %br
+              = t('admin.company.general.or').upcase
+            %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button")
+              = t('admin.company.general.browse')
+
+        .max-42
+          %label.admin-input__label
+            = t('admin.company.general.landing_photo')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.landing_photo_info')}")
+          .a-drag-drop
+            %p.a-drag-drop__title
+              = t('admin.company.general.drag_drop_upload')
+              %br
+              = t('admin.company.general.or').upcase
+            %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button")
+              = t('admin.company.general.browse')
+
+          .a-drag-drop
+            .a-drag-drop__img-wrap
+              %span.a-drag-drop__img-remove.icon.icon-cross
+              = image_tag 'temp/agenda_team.jpg', class: 'a-drag-drop__img'
+
+        .max-42
+          %label.admin-input__label
+            = t('admin.company.general.company_video')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.company_video_info')}")
+          .a-drag-drop
+            %p.a-drag-drop__title
+              = t('admin.company.general.drag_drop_upload')
+              %br
+              = t('admin.company.general.or').upcase
+            %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button")
+              = t('admin.company.general.browse')
+
+        .max-60
+          %label.admin-input__label(for="#{t('admin.company.general.company_bio').parameterize}")
+            = t('admin.company.general.company_bio')
+            \ /
+            = t('admin.company.general.about_us')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.company_bio_info')}")
+          .admin-input__wrap
+            %textarea.admin-input__input(id="#{t('admin.company.general.company_bio').parameterize}"
+                                         rows="13")
+
+      .max-73.m-b-1
+        %label.admin-input__label
+          = t('admin.company.general.key_milestones')
+          %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.key_milestones_info')}")
+        .flex-row.flex-items-xs-between
+          .max-60.flex-grow.flex-row.flex-items-xs-between
+            .max-20.flex-grow
+              .admin-input__wrap.m-b-1(ng-controller="dateCtrl")
+                %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                          uib-datepicker-popup
+                                          ng-model="dt"
+                                          is-open="popup1.opened"
+                                          datepicker-options="dateOptions"
+                                          show-button-bar="false"
+                                          ng-required="true"
+                                          id="#{t('admin.people.create_profile.status').parameterize}")
+                %span.admin-input__cal-btn(ng-click="open1()")
+                  %i.icon.icon-calendar
+            .max-38.flex-grow
+              .admin-input__wrap.m-b-1
+                %input.admin-input__input(type="text" placeholder="#{t('admin.company.general.event')}")
+          .max-11.flex-grow.flex-align-self-center
+            %span.a-company__remove-item
+              %span.a-company__remove-item-text(title="example.jpg")
+                example.jpg
+              %i.a-company__remove-item-icon.icon.icon-cross
+        - 3.times do
+          .flex-row.flex-items-xs-between
+            .max-60.flex-grow.flex-row.flex-items-xs-between
+              .max-20.flex-grow
+                .admin-input__wrap.m-b-1(ng-controller="dateCtrl")
+                  %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                            uib-datepicker-popup
+                                            ng-model="dt"
+                                            is-open="popup1.opened"
+                                            datepicker-options="dateOptions"
+                                            show-button-bar="false"
+                                            ng-required="true"
+                                            id="#{t('admin.people.create_profile.status').parameterize}")
+                  %span.admin-input__cal-btn(ng-click="open1()")
+                    %i.icon.icon-calendar
+              .max-38.flex-grow
+                .admin-input__wrap.m-b-1
+                  %input.admin-input__input(type="text" placeholder="#{t('admin.company.general.event')}")
+            .max-11.flex-grow.flex-align-self-center
+              %button.simple-btn.simple-btn--blue-380.min-11(type="button")
+                = t('admin.company.general.upload_photo')
+        .a-company__add-item-boxes
+          - 3.times do
+            .a-company__add-item-box
+              %i.a-company__item--remove.icon.icon-cross
+              .a-company__general-date
+                .admin-input__wrap.max-20(ng-controller="dateCtrl")
+                  %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                            uib-datepicker-popup
+                                            ng-model="dt"
+                                            is-open="popup1.opened"
+                                            datepicker-options="dateOptions"
+                                            show-button-bar="false"
+                                            ng-required="true"
+                                            id="#{t('admin.people.create_profile.status').parameterize}")
+                  %span.admin-input__cal-btn(ng-click="open1()")
+                    %i.icon.icon-calendar
+
+              .admin-input__wrap
+                %input.admin-input__input(id="#{t('admin.company.general.company_name').parameterize}"
+                                          type="text")
+              .admin-input__wrap
+                %textarea.admin-input__input(rows="6")
+
+              %button.simple-btn.simple-btn--blue-380.min-11(type="button")
+                = t('admin.company.general.upload_photo')
+
+        .p-t-5
+          .a-add-item-btn
+            %i.a-add-item-btn-icon.icon.icon-plus-rounded
+            %span.a-add-item-btn-text
+              = t('admin.company.general.add_more_milestones')
+
+
+
+      .max-60.m-b-1
+        %label.admin-input__label
+          = t('admin.company.general.company_values')
+          %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{t('admin.company.general.company_values_info')}")
+        - 3.times do
+          .flex-row.flex-items-xs-between
+            .max-20.flex-grow
+              .admin-input__wrap.m-b-1
+                %input.admin-input__input(type="text" placeholder="#{t('admin.company.general.value')}")
+            .max-38.flex-grow
+              .admin-input__wrap.m-b-1
+                %input.admin-input__input(type="text" placeholder="#{t('admin.company.general.description')}")
+
+        .a-company__add-item-boxes
+          - 2.times do
+            .a-company__add-item-box
+              %i.a-company__item--remove.icon.icon-cross
+              .admin-input__wrap
+                %input.admin-input__input(type="text")
+              .admin-input__wrap
+                %textarea.admin-input__input(rows="6")
+
+        .p-t-5
+          .a-add-item-btn
+            %i.a-add-item-btn-icon.icon.icon-plus-rounded
+            %span.a-add-item-btn-text
+              = t('admin.company.general.add_more_company_values')
+
+      .max-60.m-b-1
+        %label.admin-input__label
+          = t('admin.company.general.gallery')
+        .a-company__gallery
+          - 6.times do
+            .a-company__gallery-item
+              %i.a-company__item--remove.icon.icon-cross
+              .a-company__gallery-item-img-wrap
+                = image_tag 'temp/agenda_team.jpg', class: 'a-company__gallery-item-img'
+        .a-drag-drop
+          %p.a-drag-drop__title
+            = t('admin.company.general.drag_drop_upload')
+            %br
+            = t('admin.company.general.or').upcase
+          %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button")
+            = t('admin.company.general.browse')
+
+      %button.simple-btn.simple-btn--blue-380.min-11.m-r-1(type="button")
+        = t('admin.company.general.save')
+      %button.simple-btn.simple-btn--blue-380.min-11(type="button")
+        = t('admin.company.general.cancel')

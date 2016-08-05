@@ -1,0 +1,10 @@
+.a-people__panel
+  %uib-tabset.a-people__onboard(active="onboard_ctrl.active_step")
+    %uib-tab(ng-repeat="step in onboard_ctrl.steps"
+             disable="onboard_ctrl.isStepDisabled($index)")
+      %uib-tab-heading
+        .a-people__step-content(ng-class="{ 'a-people__step-content--complete': step.isCompleted(), 'a-people__step-content--active': onboard_ctrl.isStepActive($index) }")
+          %span.a-people__step-text
+            {{ ::step.name }}
+          %i.a-people__step-icon.icon.icon-checkmark
+      %ng-include(src="step.template_url")

@@ -1,0 +1,49 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-8.offset-lg-2
+        %div
+          %h2.gs-about__title
+            = I18n.t('wrap_up.title')
+        .m-b-3
+          %p.gs-about__text
+            = I18n.t('wrap_up.almost_done')
+        %ul.gs-wrap-up__list
+          %li.gs-wrap-up__li
+            .gs-wrap-up__li-check-wrap
+              %i.gs-wrap-up__li-check.gs-wrap-up__li-check--active.icon.icon-checkmark
+            %div
+              %h3.gs-wrap-up__li-title
+                = I18n.t('onboard.steps.welcome')
+              %p.gs-wrap-up__li-hint
+                = I18n.t('wrap_up.learn_about')
+          %li.gs-wrap-up__li
+            .gs-wrap-up__li-check-wrap
+              %i.gs-wrap-up__li-check.gs-wrap-up__li-check--active.icon.icon-checkmark
+            %div
+              %h3.gs-wrap-up__li-title
+                = I18n.t('onboard.steps.our_story')
+              %p.gs-wrap-up__li-hint
+                = I18n.t('wrap_up.discover')
+                greyhd's
+                = I18n.t('wrap_up.history_values')
+          %li.gs-wrap-up__li
+            .gs-wrap-up__li-check-wrap
+              %i.gs-wrap-up__li-check.gs-wrap-up__li-check--active.icon.icon-checkmark
+            %div
+              %h3.gs-wrap-up__li-title
+                = I18n.t('onboard.steps.our_team')
+              %p.gs-wrap-up__li-hint
+                = I18n.t('wrap_up.future_team')
+          %li.gs-wrap-up__li
+            .gs-wrap-up__li-check-wrap
+              %i.gs-wrap-up__li-check.icon.icon-checkmark
+            %div
+              %h3.gs-wrap-up__li-title
+                = I18n.t('onboard.steps.about_you')
+              %p.gs-wrap-up__li-hint
+                = I18n.t('wrap_up.employee_profile')
+
+        .text-xs-center
+          %button.main-btn.main-btn--navy-600.min-12.m-b-3(type="button")
+            = I18n.t('wrap_up.finish')

@@ -1,0 +1,96 @@
+.gs-about {
+  display: flex;
+  .tab-pane {
+    display: none;
+    &.active {
+      display: block;
+    }
+  }
+  > .nav-tabs {
+    width: 16rem;
+    flex-shrink: 0;
+    padding-top: 3rem;
+    padding-right: 1rem;
+    > .nav-item.active .gs-about__tab-text {
+      font-weight: 600;
+      color: black;
+    }
+  }
+  .tab-content {
+    flex-grow: 1;
+  }
+}
+.gs-about__tab-text {
+  display: inline-block;
+  font-size: 1.4rem;
+  color: $grey-300;
+  margin-bottom: 1rem;
+}
+.gs-about__title {
+  display: inline-block;
+  font-size: 2rem;
+  font-weight: 700;
+  padding-bottom: 0.8rem;
+  border-bottom: 0.1rem solid black;
+  margin-bottom: 2.5rem;
+}
+.gs-about__text {
+  font-size: 1.4rem;
+  font-weight: 300;
+  line-height: 1.6;
+  margin-bottom: 2.5rem;
+}
+.gs-about__personal-info {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  max-width: 50rem;
+}
+.gs-about__personal-info-left {
+  flex-grow: 1;
+  max-width: 25rem;
+  margin-right: 1rem;
+}
+.gs-about__personal-info-right {
+  width: 19rem;
+}
+.gs-about__photo-wrap {
+  display: flex;
+  justify-content: center;
+  position: relative;
+  width: 19rem;
+  height: 19rem;
+  border: 0.2rem solid $navy-600;
+  cursor: pointer;
+  margin-bottom: 1.5rem;
+  &:after {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transition: background-color 0.2s ease-in-out;
+  }
+  &:hover:after {
+    background-color: rgba(black, 0.1);
+  }
+}
+.gs-about__photo {
+  display: inline-block;
+  height: 100%;
+}
+.gs-about__photo-img {
+  height: 18.6rem;
+}
+.gs-about__photo-icon {
+  display: block;
+  text-align: center;
+  position: absolute;
+  top: calc(50% - 1.5rem);
+  left: 0;
+  right: 0;
+  color: $grey-450;
+  font-size: 3rem;
+}

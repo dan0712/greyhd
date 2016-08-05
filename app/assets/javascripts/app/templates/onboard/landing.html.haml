@@ -1,0 +1,14 @@
+.welcome-container.fade-in-animation
+  .welcome-container__logo
+    %img.welcome-container__logo-img(ng-src="{{onboard_ctrl.company.logo}}")
+  .welcome-container__description
+    %h1.welcome-container__title
+      {{ 'onboard.welcome.title' | translate: { name: onboard_ctrl.current_user.first_name } }}
+    %p.welcome-container__text
+      {{ 'onboard.welcome.text_first' | translate: { company: onboard_ctrl.company.name } }}
+      %br
+      = I18n.t('onboard.welcome.text_second')
+  .welcome-container__img-box
+    %img.welcome-container__img(ng-src="{{onboard_ctrl.company.landing_page_image.file.url}}" alt='')
+  %button.main-btn.main-btn--green-300(type="button" ng-click="onboard_ctrl.nextStep(0)" animate-in-view="pulse-animation" animate-in-view-timeout="3000" wait-for-animation=".fade-in-animation")
+    = I18n.t('onboard.welcome.cta')

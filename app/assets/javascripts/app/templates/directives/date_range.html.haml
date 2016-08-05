@@ -1,0 +1,21 @@
+%div
+  %span.a-company__tasks-li-date-text(ng-if="needToShowDays()")
+    = I18n.t('admin.company.tasks.due')
+  .a-company__tasks-li-date-date(ng-if="needToShowDays()")
+    %input.admin-input__input(type="number"
+                              ng-change="setModelValue()"
+                              ng-model="$parent.days")
+  %span.a-company__tasks-li-date-text(ng-if="needToShowDays()")
+    = I18n.t('admin.company.tasks.days')
+  .a-company__tasks-li-date-select
+    %ui-select.main-select(theme="selectize"
+                           search-enabled="false"
+                           ng-model="$parent.selected_event_id"
+                           on-select="setModelValue()")
+      %ui-select-match
+        {{ $select.selected.name }}
+      %ui-select-choices(repeat="event.id as event in events")
+        %span
+          {{ event.name }}
+  %span.a-company__tasks-li-date-text
+    = I18n.t('admin.company.tasks.start_date')

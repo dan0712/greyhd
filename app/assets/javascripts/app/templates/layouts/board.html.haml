@@ -1,0 +1,43 @@
+%header.header-admin
+  .container-fluid
+    .row
+      .col-xs-12
+        .header-admin__content
+          .header-admin__section
+            %a.header-admin__logo.header-admin__item(href="#")
+              %img.header-admin__logo-img(ng-src="{{board_ctrl.company.logo}}")
+
+            %nav.header-admin__nav
+              %a.header-admin__nav-item.header-admin__item(ui-sref="home"
+                                                           ui-sref-active="header-admin__nav-item--active")
+                = I18n.t('admin.header.nav.home')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = I18n.t('admin.header.nav.company')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = I18n.t('admin.header.nav.team')
+              %a.header-admin__nav-item.header-admin__item(href="#")
+                = I18n.t('admin.header.nav.resources')
+              %a.header-admin__nav-item.header-admin__item(ui-sref="admin.dashboard"
+                                                           ui-sref-active="{'header-admin__nav-item--active': 'admin'}")
+                = I18n.t('admin.header.nav.admin')
+
+          .header-admin__section.no-shrink
+            .header-admin__search-wrap.header-admin__item
+              %i.header-admin__search-icon.icon.icon-magnifier
+              %input.header-admin__search(type="search"
+                                          placeholder="#{I18n.t('admin.header.search')}")
+            %a.header-admin__draft.header-admin__item(href="#")
+              %i.icon.icon-draft
+
+            .header-admin__user-wrap.header-admin__item(uib-dropdown is-open="board_ctrl.is_menu_open")
+              .header-admin__user-img(uib-dropdown-toggle)
+                %img.header-admin__user-img(ng-src="{{board_ctrl.current_user.picture}}" alt="{{board_ctrl.current_user.picture}}")
+              .header-admin__user-menu(uib-dropdown-menu role="menu")
+                %ul.header-admin__user-menu-content
+                  %li(role="menuitem")
+                    %a.header-admin__user-menu-item(href="#" ng-click="board_ctrl.signOut()")
+                      %i.header-admin__user-menu-item-icon.icon.icon-power-off
+                      %span.header-admin__user-menu-item-text
+                        = I18n.t('admin.header.sign_out')
+
+%ui-view.main-admin__content

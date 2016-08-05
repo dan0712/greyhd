@@ -1,0 +1,46 @@
+@mixin simple-btn {
+  display: inline-block;
+  font-weight: 300;
+  text-align: center;
+  border: none;
+  box-shadow: none;
+  cursor: pointer;
+  outline: none;
+  &.disabled {
+    cursor: default;
+    cursor: not-allowed;
+  }
+}
+
+.simple-btn {
+  @include simple-btn;
+  font-size: 1.2rem;
+  color: white;
+  padding: 0.8rem 1.2rem;
+  margin-bottom: 1.5rem;
+}
+.simple-btn--sm {
+  @include simple-btn;
+  font-size: 0.9rem;
+  color: white;
+  padding: 0.6rem 1rem;
+  margin-bottom: 1rem;
+}
+
+.simple-btn--blue-380 {
+  background-color: $blue-380;
+  &:hover {
+    background-color: lighten($blue-380, 5%);
+  }
+  &.disabled {
+    background-color: $grey-300;
+    color: $grey-600;
+  }
+}
+.simple-btn--transp-blue-380 {
+  color: $blue-380;
+  background-color: transparent;
+  &:hover {
+    color: darken($blue-380, 10%);
+  }
+}

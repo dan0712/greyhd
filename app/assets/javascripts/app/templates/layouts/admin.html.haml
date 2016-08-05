@@ -1,0 +1,72 @@
+%aside.admin-nav
+  %ul
+    %li.admin-nav__li.clearfix(ui-sref-active="admin-nav__li--active")
+      .admin-nav__li-item(menu-group="admin-nav__li--active")
+        %i.admin-nav__li-item-icon.icon-stats.font-24
+        %span.admin-nav__li-item-text(ui-sref="admin.dashboard")
+          = I18n.t('admin.main_nav.dashboard')
+    %li.admin-nav__li.clearfix(ui-sref-active="{'admin-nav__li--active': 'admin.people'}"
+                               menu-group="admin-nav__li--active"
+                               menu-group-toggler=".admin-nav__li-item")
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-user.font-24
+        %span.admin-nav__li-item-text
+          = I18n.t('admin.main_nav.people')
+        %i.admin-nav__li-triangle
+      %ul.admin-nav__li-subitems
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.people.onboardNew"
+                                   ui-sref-active-if="'admin.people.onboardNew admin.people.onboardEdit'"
+                                   ui-sref-active-class="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.onboard')
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.people.manage"
+                                   ui-sref-active="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.manage')
+        %li
+          %a.admin-nav__li-subitem(href="#")
+            = I18n.t('admin.main_nav.offboard')
+    %li.admin-nav__li.clearfix(ui-sref-active="{'admin-nav__li--active': 'admin.company'}"
+                               menu-group="admin-nav__li--active"
+                               menu-group-toggler=".admin-nav__li-item")
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-briefcase.font-24
+        %span.admin-nav__li-item-text
+          = I18n.t('admin.main_nav.company')
+        %i.admin-nav__li-triangle
+      %ul.admin-nav__li-subitems
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.company.general"
+                                   ui-sref-active="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.general')
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.company.teams"
+                                   ui-sref-active="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.teams')
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.company.locations"
+                                   ui-sref-active="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.locations')
+        %li
+          %a.admin-nav__li-subitem(ui-sref="admin.company.tasks"
+                                   ui-sref-active="admin-nav__li-subitem--active")
+            = I18n.t('admin.main_nav.tasks')
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-folder.font-22
+        %span.admin-nav__li-item-text
+          = I18n.t('admin.main_nav.resources')
+        %i.admin-nav__li-triangle
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-file.font-27
+        %span.admin-nav__li-item-text
+          = I18n.t('admin.main_nav.billing')
+        %i.admin-nav__li-triangle
+    %li.admin-nav__li.clearfix
+      .admin-nav__li-item
+        %i.admin-nav__li-item-icon.icon-gear.font-24
+        %span.admin-nav__li-item-text
+          = I18n.t('admin.main_nav.integrations')
+        %i.admin-nav__li-triangle
+%ui-view.admin-panel

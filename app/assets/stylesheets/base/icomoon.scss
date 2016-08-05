@@ -1,0 +1,165 @@
+$font-path: "fonts";
+
+@mixin font-face($name, $filename, $weight: normal, $style: normal, $prefix: '', $ttf-pref: '') {
+  @font-face {
+    font-family: $name;
+    src: url(asset-path('#{$name}/#{$filename}#{$prefix}.woff')) format('woff'),
+         url(asset-path('#{$name}/#{$filename}#{$prefix}.ttf#{$ttf-pref}')) format('truetype'),
+         url(asset-path('#{$name}/#{$filename}#{$prefix}.svg#{$prefix}')) format('svg');
+    font-weight: $weight;
+    font-style: $style;
+  }
+}
+
+@include font-face("icomoon", "icomoon");
+
+[class^="icon-"], [class*=" icon-"] {
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+
+$icon-draft: "\e903";
+$icon-briefcase: "\e900";
+$icon-calendar: "\e901";
+$icon-check-rounded: "\e902";
+$icon-file: "\e904";
+$icon-folder: "\e905";
+$icon-gear: "\e906";
+$icon-grad-cap: "\e907";
+$icon-magnifier: "\e908";
+$icon-plus-rounded: "\e909";
+$icon-stats: "\e90a";
+$icon-user: "\e90b";
+$icon-play: "\e90d";
+$icon-bin: "\e90e";
+$icon-checkmark: "\e90f";
+$icon-plus: "\e910";
+$icon-sort: "\e90c";
+$icon-info: "\e911";
+$icon-pencil: "\e912";
+$icon-image: "\e913";
+$icon-cross: "\e914";
+$icon-minus-rounded: "\e915";
+$icon-clip: "\e916";
+$icon-user-dark: "\e917";
+$icon-arrow-left: "\e918";
+$icon-arrow-left-double: "\e919";
+$icon-arrow-right-double: "\e91a";
+$icon-arrow-right: "\e91b";
+$icon-organization: "\e91e";
+$icon-location: "\e91c";
+$icon-teams: "\e91d";
+$icon-power-off: "\e91f";
+$icon-camera: "\e920";
+$icon-drag: "\e921";
+
+.icon-drag:before {
+  content: $icon-drag;
+}
+.icon-camera:before {
+  content: $icon-camera;
+}
+.icon-power-off:before {
+  content: $icon-power-off;
+}
+.icon-organization:before {
+  content: $icon-organization;
+}
+.icon-location:before {
+  content: $icon-location;
+}
+.icon-teams:before {
+  content: $icon-teams;
+}
+.icon-arrow-left:before {
+  content: $icon-arrow-left;
+}
+.icon-arrow-left-double:before {
+  content: $icon-arrow-left-double;
+}
+.icon-arrow-right-double:before {
+  content: $icon-arrow-right-double;
+}
+.icon-arrow-right:before {
+  content: $icon-arrow-right;
+}
+.icon-clip:before {
+  content: $icon-clip;
+}
+.icon-user-dark:before {
+  content: $icon-user-dark;
+}
+.icon-minus-rounded:before {
+  content: $icon-minus-rounded;
+}
+.icon-cross:before {
+  content: $icon-cross;
+}
+.icon-image:before {
+  content: $icon-image;
+}
+.icon-pencil:before {
+  content: $icon-pencil;
+}
+.icon-info:before {
+  content: $icon-info;
+}
+.icon-sort:before {
+  content: $icon-sort;
+}
+.icon-play:before {
+  content: $icon-play;
+}
+.icon-bin:before {
+  content: $icon-bin;
+}
+.icon-checkmark:before {
+  content: $icon-checkmark;
+}
+.icon-plus:before {
+  content: $icon-plus;
+}
+.icon-draft:before {
+  content: $icon-draft;
+}
+.icon-briefcase:before {
+  content: $icon-briefcase;
+}
+.icon-calendar:before {
+  content: $icon-calendar;
+}
+.icon-check-rounded:before {
+  content: $icon-check-rounded;
+}
+.icon-file:before {
+  content: $icon-file;
+}
+.icon-folder:before {
+  content: $icon-folder;
+}
+.icon-gear:before {
+  content: $icon-gear;
+}
+.icon-grad-cap:before {
+  content: $icon-grad-cap;
+}
+.icon-magnifier:before {
+  content: $icon-magnifier;
+}
+.icon-plus-rounded:before {
+  content: $icon-plus-rounded;
+}
+.icon-stats:before {
+  content: $icon-stats;
+}
+.icon-user:before {
+  content: $icon-user;
+}

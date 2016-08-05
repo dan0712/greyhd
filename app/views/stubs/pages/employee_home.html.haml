@@ -1,0 +1,147 @@
+.container
+  .row
+    .col-xs-12
+      .empl-home
+        %h1.empl-home__title
+          = I18n.t('employee.home.title')
+        .empl-home__blocks
+          .empl-home__block.empl-home__block--half
+            .empl-home__block-head
+              %h2.empl-home__block-head-title
+                = I18n.t('employee.home.profile.head')
+              %i.empl-home__block-head-action.icon.icon-pencil
+            .empl-home__block-body
+              .empl-home__profile-wrap
+                .empl-home__profile-left
+                  .empl-home__profile-img
+                    = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                  %p.empl-home__profile-name
+                    Nick Newton
+
+                .empl-home__profile-info
+                  .empl-home__profile-info-block
+                    %h3.empl-home__profile-info-title
+                      = I18n.t('employee.home.profile.title')
+                    %p.empl-home__profile-info-text
+                      Customer Success Manager
+                  .empl-home__profile-info-block
+                    %h3.empl-home__profile-info-title
+                      = I18n.t('employee.home.profile.email')
+                    %p.empl-home__profile-info-text
+                      nicknewton@greyhd.com
+                  .empl-home__profile-info-block
+                    %h3.empl-home__profile-info-title
+                      = I18n.t('employee.home.profile.phone')
+                    %p.empl-home__profile-info-text
+                      415 323 9319
+                  .empl-home__profile-info-block
+                    %h3.empl-home__profile-info-title
+                      = I18n.t('employee.home.profile.location')
+                    %p.empl-home__profile-info-text
+                      NYC Campus
+
+          .empl-home__block.empl-home__block--half
+            .empl-home__block-head
+              %h2.empl-home__block-head-title
+                = I18n.t('employee.home.about_you_head')
+              %i.empl-home__block-head-action.icon.icon-pencil
+            .empl-home__block-body
+              %p.empl-home__about-text
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+              %p.empl-home__about-text
+                Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.
+
+          .empl-home__block.empl-home__block--half
+            .empl-home__block-head
+              %h2.empl-home__block-head-title
+                = I18n.t('employee.home.company_events_head')
+              %i.empl-home__block-head-action.icon.icon-pencil
+            .empl-home__block-body
+              .empl-home__event
+                %p.empl-home__event-date
+                  May 8th
+                %p.empl-home__event-text
+                  All-Hands lunch at NYC Campus
+              .empl-home__event
+                %p.empl-home__event-date
+                  May 25th
+                %p.empl-home__event-text
+                  Q2 update call with CEO
+              .empl-home__event
+                %p.empl-home__event-date
+                  May 20th
+                %p.empl-home__event-text
+                  greyhd All-Hands with VP Sales
+
+          .empl-home__block.empl-home__block--half
+            .empl-home__block-head
+              %h2.empl-home__block-head-title
+                = I18n.t('employee.home.new_hires.head')
+              %i.empl-home__block-head-action.icon.icon-pencil
+            .empl-home__block-body
+              %p.empl-home__hires-text
+                = I18n.t('employee.home.new_hires.welcome_new')
+                greyhd!
+              %ul.empl-home__hires-items
+                - 2.times do
+                  %li.empl-home__hires-item
+                    .empl-home__hires-item-img
+                      = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                    .empl-home__hires-item-info
+                      %p.empl-home__hires-item-name
+                        James Jones
+                      %p.empl-home__hires-item-position
+                        Customer Success Manager | New York, NY
+              %p.empl-home__hires-text
+                = I18n.t('employee.home.new_hires.upcoming_birthdays')
+              %ul.empl-home__hires-items
+                - 2.times do
+                  %li.empl-home__hires-item
+                    .empl-home__hires-item-img
+                      = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+                    .empl-home__hires-item-info
+                      %p.empl-home__hires-item-name
+                        James Jones
+                      %p.empl-home__hires-item-position
+                        Customer Success Manager | New York, NY
+
+          .empl-home__block.empl-home__block--full
+            .empl-home__block-head
+              %h2.empl-home__block-head-title
+                = I18n.t('employee.home.resources.head')
+              %i.empl-home__block-head-action.icon.icon-pencil
+            .empl-home__block-body
+              %table.empl-home__resources-table
+                %colgroup
+                  %col(style="width: 30%;")
+                  %col(style="width: 25%;")
+                  %col(style="width: 25%;")
+                  %col(style="width: 20%;")
+                %thead
+                  %th.empl-home__resources-th
+                    %span.empl-home__resources-th-text
+                      = I18n.t('employee.home.resources.title')
+                  %th.empl-home__resources-th
+                    %span.empl-home__resources-th-text
+                      = I18n.t('employee.home.resources.owner')
+                  %th.empl-home__resources-th
+                    %span.empl-home__resources-th-text
+                      = I18n.t('employee.home.resources.tags')
+                  %th.empl-home__resources-th
+                    %span.empl-home__resources-th-text
+                      = I18n.t('employee.home.resources.modified')
+                %tbody
+                  - 10.times do
+                    %tr
+                      %td.empl-home__resources-td
+                        %span.empl-home__resources-td-text
+                          Business Development
+                      %td.empl-home__resources-td
+                        %span.empl-home__resources-td-text
+                          Melbourne, Australia
+                      %td.empl-home__resources-td
+                        %span.empl-home__resources-td-text
+                          Joey Layafette
+                      %td.empl-home__resources-td
+                        %span.empl-home__resources-td-text
+                          Link

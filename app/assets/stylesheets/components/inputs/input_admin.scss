@@ -1,0 +1,62 @@
+.admin-input__wrap {
+  position: relative;
+  margin-bottom: 2rem;
+  &.with-error {
+    .admin-input__input {
+      border-color: $red-400;
+    }
+    .admin-input__hint {
+      display: block;
+    }
+  }
+}
+.admin-input__label {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: $grey-600;
+  margin-bottom: 0.5rem;
+}
+.admin-input__label-info-icon {
+  font-size: 1.4rem;
+  color: $grey-500;
+  vertical-align: middle;
+  margin-left: 0.3rem;
+}
+.admin-input__input {
+  display: block;
+  width: 100%;
+  font-size: 1.2rem;
+  font-weight: 300;
+  background-color: white;
+  outline: none;
+  border: 0.1rem solid $grey-280;
+  padding: 0.7rem;
+  &:hover, &:focus {
+    border-color: darken($grey-280, 20%);
+  }
+}
+.admin-input__hint {
+  display: none;
+  font-size: 1.2rem;
+  margin-top: 0.2rem;
+  margin-bottom: 1rem;
+}
+
+.admin-input__input--datepicker {
+  padding-left: 3rem;
+}
+.admin-input__cal-btn {
+  display: inline-block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  font-size: 1.4rem;
+  cursor: pointer;
+  padding: 0.8rem;
+}
+.admin-input__picker-color {
+  width: 3rem;
+  height: 3rem;
+  border-color: $grey-280 !important;
+}

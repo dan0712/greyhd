@@ -1,0 +1,14 @@
+.welcome-container
+  .welcome-container__logo
+    = image_tag 'general/main_logo.svg', class: 'welcome-container__logo-img'
+  .welcome-container__description
+    %h1.welcome-container__title
+      =t('stubs.welcome.title')
+    %p.welcome-container__text
+      =t('stubs.welcome.text_first')
+      %br
+      =t('stubs.welcome.text_second')
+  .welcome-container__img-box
+    = image_tag 'temp/welcome_team.jpg', class: 'welcome-container__img', alt: ''
+  %a.main-btn.main-btn--green-300(href="#")
+    =t('onboard.welcome.cta')

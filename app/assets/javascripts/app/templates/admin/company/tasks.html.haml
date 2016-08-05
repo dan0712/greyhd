@@ -1,0 +1,183 @@
+.a-company__panel
+  .max-40
+    %h1.a-main__title
+      = I18n.t('admin.company.tasks.title')
+    %p.a-company__text
+      = I18n.t('admin.company.tasks.title_hint')
+  .a-company__tasks-content
+    .a-company__ws-column.max-40
+      .a-company__ws-box.clearfix
+        .a-people__ws-box-head
+          %p.a-people__ws-box-head-info
+            %span.a-people__ws-box-head-text.font-10
+              %span>= I18n.t('admin.people.tasks.workstreams_total')
+              \:
+              %span.font-semi-bold
+                {{ tasks_ctrl.workstreams.length }}
+              %span
+                |
+              %span>= I18n.t('admin.people.tasks.tasks_total')
+              \:
+              %span.font-semi-bold
+                {{ tasks_ctrl.tasksTotal() }}
+
+          %div
+            .a-people__ws-box-head-btn(ng-if="tasks_ctrl.workstreams.length"
+                                       ng-click="tasks_ctrl.reorder_workstreams.toggle()")
+              %i.a-people__ws-box-head-btn-icon.icon.icon-sort
+              %span.a-people__ws-box-head-btn-text
+                {{ tasks_ctrl.reorder_workstreams.text() }}
+
+        %ul.a-workstreams-list(ng-model="tasks_ctrl.workstreams"
+                               as-sortable="tasks_ctrl.dragAndDropWorkstreams")
+          %li.a-workstreams-li(ng-repeat="workstream in tasks_ctrl.workstreams"
+                               ng-click="tasks_ctrl.toggleWorkstream(workstream)"
+                               ng-class="{ 'a-workstreams-li--active' : tasks_ctrl.isCurrentWorkstream(workstream) }"
+                               as-sortable-item
+                               data-qa-id="company-tasks-workstream-row")
+            %span.a-workstreams-li__text.m-r-2
+              %span.a-drag-icon.icon.icon-drag(as-sortable-item-handle
+                                                 ng-if="tasks_ctrl.reorder_workstreams.state")
+              {{ workstream.name }}
+            %span.a-workstreams-li__text
+              {{ tasks_ctrl.tasksText(workstream.tasks_count) }}
+
+        .a-add-item-btn.m-l-1(ng-click="tasks_ctrl.editWorkstream()"
+                              ng-if="!tasks_ctrl.workstream_form_shown"
+                              data-qa-id="company-tasks-add-new-workstream")
+          %i.a-add-item-btn-icon.icon.icon-plus-rounded
+          %span.a-add-item-btn-text
+            = I18n.t('admin.company.tasks.add_new_workstream')
+
+        %form.a-new-workstream-form(ng-if="tasks_ctrl.workstream_form_shown"
+                                    novalidate="true"
+                                    ng-submit="tasks_ctrl.saveWorkstream()"
+                                    name="tasks_ctrl.workstream_form")
+
+          .admin-input__wrap.m-b-1(has-errors="name")
+            %input.admin-input__input(placeholder="#{I18n.t('admin.company.tasks.add_new_workstream_name')}"
+                                      type="text"
+                                      name="name"
+                                      ng-model="tasks_ctrl.workstream_in_edit.name"
+                                      required="required")
+            %show-errors(field="name")
+              %p.admin-input__hint.in-red-400(error="required")
+                = I18n.t('admin.company.tasks.add_new_workstream_name_req')
+          %button.simple-btn.simple-btn--blue-380.min-11(type="submit")
+            = I18n.t('admin.company.tasks.add_new_workstream_save')
+          %button.simple-btn.simple-btn--blue-380.min-11(type="button"
+                                                         ng-click="tasks_ctrl.cancelWorkstreamForm()")
+            = I18n.t('admin.company.tasks.add_new_workstream_cancel')
+
+    .a-company__tasks-column(ng-if="tasks_ctrl.current_workstream")
+      .a-company__tasks-head.clearfix
+        %h3.a-company__tasks-head-title
+          {{ tasks_ctrl.current_workstream.name }}
+        .no-shrink
+          %i.a-company__tasks-head-action.icon-pencil(ng-click="tasks_ctrl.editWorkstream(tasks_ctrl.current_workstream)")
+          %i.a-company__tasks-head-action.icon-bin(ng-click="tasks_ctrl.deleteWorkstream()")
+      .a-company__tasks-head-actions
+        %p.a-people__ws-box-head-info
+          %span.a-people__ws-box-head-text.font-10
+            %span>= I18n.t('admin.people.tasks.tasks_total')
+            \:
+            %span.font-semi-bold
+              {{ tasks_ctrl.current_workstream.tasks_count }}
+
+        %div
+          .a-people__ws-box-head-btn(ng-if="tasks_ctrl.current_workstream.tasks_count"
+                                     ng-click="tasks_ctrl.reorder_tasks.toggle()")
+            %i.a-people__ws-box-head-btn-icon.icon.icon-sort
+            %span.a-people__ws-box-head-btn-text
+              {{ tasks_ctrl.reorder_tasks.text() }}
+
+      %ul.m-b-2(ng-model="tasks_ctrl.current_workstream.tasks"
+                as-sortable="tasks_ctrl.dragAndDropTasks")
+        %li.a-company__tasks-li(ng-repeat="task in tasks_ctrl.current_workstream.tasks"
+                                ng-class="{ 'a-company__tasks-li--active': tasks_ctrl.isCurrentTask(task) }"
+                                data-qa-id="company-tasks-workstream-task-row"
+                                as-sortable-item)
+          .a-company__tasks-li-head
+            %h4.a-company__tasks-li-head-title
+              %i.a-drag-icon.icon.icon-drag(as-sortable-item-handle
+                                               ng-if="tasks_ctrl.reorder_tasks.state")
+              {{ task.name }}
+            .a-company__tasks-li-head-actions
+              .a-company__tasks-li-head-author(ng-if="task.owner")
+                %img.img-inherit(ng-src="{{ task.owner.picture }}"
+                                 title="{{ task.owner.first_name }} {{ task.owner.last_name }}")
+              %i.a-company__tasks-li-head-action.icon.icon-pencil(ng-click="tasks_ctrl.toggleTask(task)")
+              %i.a-company__tasks-li-head-action.icon.icon-bin(ng-if="task.id"
+                                                               ng-click="tasks_ctrl.deleteTask(task)")
+          .a-company__tasks-li-content(ng-if="tasks_ctrl.isCurrentTask(task)")
+            %form(novalidate="true"
+                  name="tasks_ctrl.current_task.form"
+                  ng-submit="tasks_ctrl.saveTask()")
+              .admin-input__wrap.m-b-1
+                %input.admin-input__input(placeholder="#{I18n.t('admin.company.tasks.task_name')}"
+                                          type="text"
+                                          required="true"
+                                          name="name"
+                                          ng-model="task.name")
+              .admin-input__wrap
+                %textarea.admin-input__input(placeholder="#{I18n.t('admin.company.tasks.task_description')}"
+                                             rows="4"
+                                             name="description"
+                                             ng-model="task.description")
+
+              .m-b-1
+                .a-company__tasks-li-action(ngf-select="tasks_ctrl.uploadAttachment(task, $file)")
+                  %i.a-company__tasks-li-action-icon.icon.icon-clip
+                  %span.a-company__tasks-li-action-text
+                    = I18n.t('admin.company.tasks.attach')
+
+                .inline-block
+                  %span.a-company__tasks-li-action(ng-if="!task.isAssign"
+                       ng-click="tasks_ctrl.enableTaskAssign(task)"
+                       data-qa-id="company-tasks-workstream-assign")
+                    %i.a-company__tasks-li-action-icon.icon.icon-user-dark
+                    %span.a-company__tasks-li-action-text
+                      = I18n.t('admin.company.tasks.assign')
+                  %show-errors(ng-if="!task.isAssign"
+                               field="owner_id")
+                    %p.admin-input__hint.in-red-400(error="required")
+                      = I18n.t('admin.company.tasks.task_owner_req')
+                .a-company__tasks-li-action
+                  %div(ng-if="task.isAssign")
+                    %ui-select.main-select(theme="selectize"
+                                           ng-model="task.owner"
+                                           task-assign
+                                           required="true"
+                                           ng-blur="tasks_ctrl.disableTaskAssign(task)"
+                                           on-select="tasks_ctrl.selectOwner($select.selected, task)"
+                                           data-qa-id="company-tasks-workstream-owner")
+                      %ui-select-match(placeholder="#{I18n.t('admin.company.tasks.users_search')}")
+                      %ui-select-choices(refresh="tasks_ctrl.searchOwner($select)"
+                                         refresh-delay="500"
+                                         ng-class="{ 'dropdown-empty': !$select.users.length }"
+                                         repeat="user in $select.users")
+                        %span
+                          {{ ::user.first_name }} {{ ::user.last_name }}
+
+                  %input(type="hidden" name="owner_id" id="owner_id" ng-model="task.owner_id" required="true")
+
+              %ul.m-b-2(ng-if="task.attachments.length")
+                %li.a-company__tasks-attach-li(ng-repeat="attachment in task.attachments")
+                  %span.a-company__tasks-attach-li-text
+                    {{ ::attachment.original_filename }}
+                  %span.a-company__tasks-attach-li-action.icon.icon-cross(ng-click="tasks_ctrl.removeAttachment(task, attachment)")
+
+              %date-range.m-b-1.a-company__tasks-li-date(ng-model="task.deadline_in" default="-7")
+
+              .text-xs-center
+                %button.simple-btn.simple-btn--transp-blue-380.min-9(type="button"
+                                                                     ng-click="tasks_ctrl.cancelTaskForm()")
+                  = I18n.t('admin.company.tasks.cancel')
+                %button.simple-btn.simple-btn--blue-380.min-9(type="submit")
+                  = I18n.t('admin.company.tasks.save')
+
+      .a-add-item-btn.m-l-1.m-b-1(ng-click="tasks_ctrl.addNewTask()"
+                                  data-qa-id="company-tasks-workstream-add-new-task")
+        %i.a-add-item-btn-icon.icon.icon-plus-rounded
+        %span.a-add-item-btn-text
+          = I18n.t('admin.company.tasks.add_new_task')

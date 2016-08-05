@@ -1,0 +1,47 @@
+.log-in__container
+  %div
+    .container
+      .row
+        .col-xs-12.text-xs-center
+          %a.log-in__logo(href="#")
+            = image_tag 'general/main_logo.svg', width: '93', height: '121',
+                                                 alt: "#{t('log_in.logo')}"
+        .col-xs-12
+          .log-in__sections
+            .log-in__form-wrap
+              %form.log-in__form
+                %h1.log-in__title
+                  = t('log_in.title')
+                .log-in__form-inputs
+                  .main-input__wrap.with-error
+                    %input.main-input(type="email" placeholder="#{t('log_in.email')}"
+                                      name="email" autocomplete="email")
+                    %p.main-input__hint.in-red-400
+                      = t('log_in.email_req')
+
+                  .main-input__wrap.with-error
+                    %input.main-input(type="password" placeholder="#{t('log_in.pass')}"
+                                      name="password" autocomplete="current-password")
+                    %p.main-input__hint.in-red-400
+                      = t('log_in.pass_req')
+                  .text-xs-right
+                    %a.log-in__forgot(href="#")
+                      = t('log_in.forgot')
+                .text-xs-center
+                  %input.log-in__submit.main-btn.main-btn--green-300.min-16(type="submit"
+                                                                     value="#{t('log_in.submit')}")
+                  %div
+                    %span.log-in__sign-up-hint
+                      = t('log_in.sign_up_hint')
+                    %a.log-in__sign-up.sec-btn.sec-btn--red-400(href="#")
+                      = t('log_in.sign_up')
+                  %div
+                    %a.log-in__to-home(href="#")
+                      = t('log_in.go_home')
+
+            .log-in__showcase-wrap.hidden-md-down
+              .log-in__showcase
+                %p.log-in__showcase-text
+                  = t('log_in.showcase')
+                = image_tag 'general/log_in_showcase.jpg',
+                            class: 'log-in__showcase-img'

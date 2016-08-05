@@ -1,0 +1,176 @@
+.a-db__panel {
+  padding: 3.5rem 3rem 0 4.2rem;
+}
+.a-db {
+  display: flex;
+  > .nav-tabs {
+    flex-shrink: 0;
+    width: 12rem;
+    padding-right: 1rem;
+    > .nav-item.active .a-db__tab-text{
+      font-weight: 400;
+      color: black;
+    }
+  }
+  > .tab-content > .tab-pane {
+    max-width: 64rem;
+  }
+}
+.a-db__tab-text {
+  display: inline-block;
+  font-size: 1.4rem;
+  font-weight: 300;
+  color: $grey-250;
+  margin-bottom: 1.2rem;
+}
+.a-db__tab-content-head {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+}
+.a-db__tab-title {
+  font-size: 1.6rem;
+  margin-right: 2rem;
+  margin-bottom: 1.5rem;
+}
+.a-db__tab-filters {
+  margin-bottom: 1rem;
+}
+.a-db__tab-filter {
+  display: inline-block;
+  vertical-align: top;
+  min-width: 10rem;
+  text-align: center;
+  background-color: white;
+  border: 0.1rem solid $blue-200;
+  border-radius: 1.7rem;
+  cursor: pointer;
+  padding: 0.8rem 1.5rem 0.3rem;
+  margin-right: 1rem;
+  margin-bottom: 1rem;
+  &:hover, &--active {
+    background-color: $blue-400;
+    border-color: $blue-400;
+    .a-db__tab-filter-text {
+      color: white;
+    }
+  }
+}
+.a-db__tab-filter--active .a-db__tab-filter-text {
+  font-weight: 700;
+}
+.a-db__tab-filter-text {
+  display: inline-block;
+  font-size: 1.2rem;
+  color: black;
+  margin-bottom: 0.5rem;
+}
+.a-db__tab-calcs {
+  margin-bottom: 1rem;
+}
+.a-db__tab-calc {
+  display: inline-block;
+  vertical-align: top;
+  font-size: 1rem;
+  font-weight: 300;
+  margin-bottom: 1rem;
+  &:not(:first-child):before {
+    content: '|';
+    display: inline-block;
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+  }
+}
+.a-db__people-table-wrap {
+  background-color: white;
+  overflow-x: auto;
+  padding: 0.7rem 1.4rem 0;
+  margin-bottom: 1.5rem;
+}
+.a-db__people-table {
+  table-layout: fixed;
+  width: 100%;
+  min-width: 61rem;
+  margin-bottom: 2rem;
+}
+.a-db__people-table-head-hint {
+  text-align: center;
+  border-bottom: 0.2rem solid $grey-220;
+  padding: 0.6rem 1rem 0;
+}
+.a-db__people-table-head-hint-text {
+  display: inline-block;
+  font-size: 1rem;
+  font-weight: 500;
+  margin-bottom: 0.6rem;
+}
+.a-db__people-table-th {
+  padding: 0.7rem 0.5rem 0.8rem;
+}
+.a-db__people-table-th-text {
+  display: inline-block;
+  font-size: 1.2rem;
+  font-weight: 600;
+  margin-bottom: 0.7rem;
+}
+.a-db__people-table-tr:nth-child(odd) {
+  background-color: $grey-120;
+}
+.a-db__people-table-td {
+  vertical-align: middle;
+  padding: 0.7rem 0.5rem 0;
+}
+.a-db__people-table-photo {
+  width: 2.6rem;
+  height: 2.6rem;
+  text-align: center;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-bottom: 0.7rem;
+}
+.a-db__people-table-td-text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  margin-bottom: 0.7rem;
+}
+.a-db__people-table-nav {
+  display: flex;
+  justify-content: space-between;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.a-db__people-table-nav-item {
+  font-size: 1rem;
+  color: $grey-400;
+  &--active, &:hover {
+    font-weight: 700;
+    color: black;
+    &:after {
+      color: $grey-400;
+    }
+  }
+  &:not(:last-child):after {
+    content: '|';
+    display: inline-block;
+    margin-left: 0.3rem;
+    margin-right: 0.3rem;
+  }
+}
+.a-db__people-table-nav-icon {
+  font-size: 0.5rem;
+  color: $grey-400;
+  cursor: pointer;
+  margin-left: 0.2rem;
+  margin-right: 0.2rem;
+  &:hover {
+    color: black;
+  }
+}
+.a-db__people-table-nav-page {
+  font-size: 1rem;
+  font-weight: 300;
+  color: black;
+  margin-left: 1rem;
+  margin-right: 1rem;
+}

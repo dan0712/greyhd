@@ -1,0 +1,21 @@
+%header.header-get-start
+  .container
+    .row
+      .col-xs-12.col-md-2.text-xs-center.text-md-right
+        .header-get-start__logo-wrap
+          = link_to '#', class: 'header-get-start__logo' do
+            = image_tag 'general/main_logo.svg', class: 'header-get-start__logo-img'
+      .col-xs-12.col-md-10
+        %ul.header-get-start__path
+          %li.header-get-start__path-li.header-get-start__path-li--active
+            = t('onboard.steps.welcome')
+          %li.header-get-start__path-li
+            = t('onboard.steps.our_story')
+          %li.header-get-start__path-li
+            = t('onboard.steps.our_team')
+          %li.header-get-start__path-li
+            = t('onboard.steps.about_you')
+          %li.header-get-start__path-li
+            = t('onboard.steps.training')
+          %li.header-get-start__path-li
+            = t('onboard.steps.wrap_up')

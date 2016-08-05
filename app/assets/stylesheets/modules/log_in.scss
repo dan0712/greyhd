@@ -1,0 +1,97 @@
+.log-in__container {
+  display: flex;
+  min-height: 100%;
+  flex-direction: column;
+  justify-content: center;
+  padding-top: 2rem;
+}
+.log-in__form-wrap {
+  margin-bottom: 6rem;
+}
+.log-in__form {
+  max-width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+}
+.log-in__logo {
+  display: inline-block;
+  margin-bottom: 3rem;
+}
+.log-in__title {
+  font-size: 2.6rem;
+  color: $red-600;
+  text-align: center;
+  margin-bottom: 2.5rem;
+}
+.log-in__form-inputs {
+  margin-bottom: 2.5rem;
+}
+.log-in__forgot {
+  font-size: 1.2rem;
+  font-weight: 300;
+  color: $green-300;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.log-in__submit {
+  margin-bottom: 4rem;
+}
+.log-in__sign-up-hint {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.6rem;
+  font-weight: 300;
+  margin: 0 1rem 2rem;
+}
+.log-in__sign-up {
+  vertical-align: middle;
+  margin: 0 1rem 2rem;
+}
+.log-in__to-home {
+  font-size: 1.2rem;
+  color: $red-400;
+  &:hover {
+    text-decoration: underline;
+  }
+}
+.log-in__showcase {
+  display: flex;
+  align-items: center;
+  max-width: 40.6rem;
+  background-image: linear-gradient(180deg, $red-600 0%, $red-800 100%);
+  padding: 2.5rem 2rem 0 2.5rem;
+}
+.log-in__showcase-text {
+  font-size: 2rem;
+  line-height: 1.4;
+  color: white;
+  margin-right: 2.5rem;
+  margin-bottom: 2.5rem;
+}
+.log-in__showcase-img {
+  flex-shrink: 0;
+  margin-bottom: 2.5rem;
+}
+
+@include media-breakpoint-up(lg) {
+  .log-in__container {
+    padding-top: 4.5rem;
+  }
+  .log-in__sections {
+    display: flex;
+  }
+  .log-in__form-wrap,
+  .log-in__showcase-wrap {
+    flex-basis: 50%;
+  }
+  .log-in__showcase-wrap {
+    margin-bottom: 6rem;
+  }
+  .log-in__form {
+    margin-right: 5rem;
+  }
+  .log-in__logo, .log-in__title {
+    margin-bottom: 4.5rem;
+  }
+}

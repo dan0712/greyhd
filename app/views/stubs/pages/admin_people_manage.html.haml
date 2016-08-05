@@ -1,0 +1,77 @@
+.a-people__panel
+  .flex-grow
+    .max-66
+      %h1.a-main__title
+        = t('admin.people.complete.title')
+
+      .a-field-box
+        %label.admin-input__label.in-black
+          = t('admin.people.manage.filter_users')
+        .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+          %ui-select.main-select-search(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+            %ui-select-match(placeholder="#{t('admin.people.manage.search_name_email')}")
+              {{$select.selected.name}}
+            %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+              %span(ng-bind-html="country.name | highlight: $select.search")
+              %small(ng-bind-html="country.code | highlight: $select.search")
+
+        .a-field-box-select-list
+          .a-field-box-select-li.m-r-1
+            .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+              %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                %ui-select-match(placeholder="#{t('admin.people.manage.search_name_email')}")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                  %span(ng-bind-html="country.name | highlight: $select.search")
+                  %small(ng-bind-html="country.code | highlight: $select.search")
+          .a-field-box-select-li.m-r-1
+            .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+              %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                %ui-select-match(placeholder="#{t('admin.people.manage.search_name_email')}")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                  %span(ng-bind-html="country.name | highlight: $select.search")
+                  %small(ng-bind-html="country.code | highlight: $select.search")
+          .a-field-box-select-li
+            .admin-input__wrap(ng-controller="SelectCtrl as ctrl")
+              %ui-select.main-select(ng-model="ctrl.country.selected" theme="selectize" ng-disabled="ctrl.disabled")
+                %ui-select-match(placeholder="#{t('admin.people.manage.search_name_email')}")
+                  {{$select.selected.name}}
+                %ui-select-choices(repeat="country in ctrl.countries | filter: $select.search")
+                  %span(ng-bind-html="country.name | highlight: $select.search")
+                  %small(ng-bind-html="country.code | highlight: $select.search")
+
+      %table.a-simple-table
+        %colgroup
+          %col(width="25%")
+          %col(width="25%")
+          %col(width="25%")
+          %col(width="25%")
+        %thead.a-company__table-head
+          %th.a-company__table-th
+            %p.a-simple-table__text.font-semi-bold
+              = t('admin.company.teams.name')
+          %th.a-company__table-th
+            %p.a-simple-table__text.font-semi-bold
+              = t('admin.company.teams.title')
+          %th.a-company__table-th
+            %p.a-simple-table__text.font-semi-bold
+              = t('admin.company.teams.last_activity')
+          %th.a-company__table-th
+            %p.a-simple-table__text.font-semi-bold
+              = t('admin.company.teams.permissions')
+        %tbody
+          - 10.times do
+            %tr.a-company__table-tr
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  Holy West
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  VP HR
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  08-Jun-15
+              %td.a-company__table-td
+                %p.a-simple-table__text
+                  Super Admin

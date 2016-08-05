@@ -1,0 +1,18 @@
+@import 'general';
+@import 'header';
+@import 'navigation';
+
+@import 'dashboard';
+
+@import 'people/general';
+
+@import 'people/onboard/step_create_profile';
+@import 'people/onboard/step_assign_tasks';
+@import 'people/onboard/step_complete';
+
+@import 'people/manage';
+@import 'people/offboard';
+
+@import 'company/general';
+@import 'company/teams';
+@import 'company/tasks';

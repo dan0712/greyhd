@@ -1,0 +1,86 @@
+%head
+  :css
+    @media screen and (max-width: 750px) {
+      .width-full {
+        width: 100% !important;
+      }
+    }
+%body
+  /[if mso| (IE)]
+    <table align="center" border="0" cellpadding="0" cellspacing="0" width="530">
+    <tr>
+    <td>
+  %table.width-full(align="center" border="0" cellpadding="0" cellspacing="0" style="max-width: 530px; Margin: 0 auto !important; background-color: white; font-family: 'Open Sans', Arial, sans-serif;" width="100%")
+    %tr
+      %td
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          %tr
+            %td(style="font-size: 20px; font-weight: 600; border-top: 5px solid #99ca3b; padding-top: 10px;")
+              Welcome to greyhd!
+            %td(width="60")
+              = image_tag 'general/email_greyhd_logo.jpg', alt: 'greyhd', width: '60', height: '60'
+    %tr
+      %td(style="padding-bottom: 5px;")
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          %tr
+            %td(style="padding-top: 20px; padding-bottom: 20px;")
+              %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+                - 3.times do
+                  %tr
+                    %td(style="font-size: 12px; padding-bottom: 15px;")
+                      We’re excited for you to be joining us on May 2, 2016. We’re excited for you to be joining us on May 2, 2016. We’re excited for you to be joining us on May 2, 2016. We’re excited for you to be joining us on May 2, 2016.
+    %tr
+      %td(style="padding-bottom: 40px;")
+        /[if mso]
+          <v:roundrect xmlns:v="urn:schemas-microsoft-com:vml" xmlns:w="urn:schemas-microsoft-com:office:word" href="http://" style="height:40px;v-text-anchor:middle;width:257px;" arcsize="8%" stroke="f" fillcolor="#99ca3b">
+          <w:anchorlock/>
+          <center>
+        %a(href="#" style="background-color: #99ca3b; border-radius: 3px; letter-spacing: 1px; color: #ffffff; display: inline-block; font-family: sans-serif; font-size: 14px; font-weight: bold; line-height: 40px; text-align: center; text-decoration: none; width: 257px; -webkit-text-size-adjust: none;")
+          SET-UP greyhd PROFILE
+        /[if mso]
+          </center>
+          </v:roundrect>
+    %tr
+      %td(style="padding-bottom: 20px;")
+        %span(style="font-size: 14px; font-weight: 700; line-height: 17px; padding: 5px 0; border-bottom: 1px solid #bdbdbd;")
+          Your Day 1 Questions Answered
+    %tr
+      %td(style="padding-bottom: 40px;")
+        %table(style="border-color: #e3e3e3;" border="1px" cellpadding="0" cellspacing="0" width="100%")
+          - 4.times do
+            %tr
+              %td(style="font-size: 12px; padding: 11px 10px; font-weight: bold; background-color: #d1d1d1;")
+                Clothing
+              %td(style="font-size: 12px; padding: 11px 10px;")
+                Business casual
+    %tr
+      %td(style="padding-bottom: 20px;")
+        %span(style="font-size: 14px; font-weight: 700; line-height: 17px; padding: 5px 0; border-bottom: 1px solid #bdbdbd;")
+          Additional Information
+
+    %tr
+      %td(style="padding-bottom: 5px;")
+        %table(border="0" cellpadding="0" cellspacing="0" width="100%")
+          - 3.times do
+            %tr
+              %td(style="font-size: 12px; padding-bottom: 15px;")
+                We’ve already arranged an extensive on-boarding program for you, including online training, and in-person meetings with key personnel across the NYC and global offices. All meetings have already been setup for you in your Gmail Calendar.
+    %tr
+      %td(style="padding-bottom: 15px;")
+        %span(style="display: block; width: 30px; border-bottom: 1px solid #838383")
+    %tr
+      %td(style="font-size: 10px; font-weight: 600; padding-bottom: 5px;")
+        Powered by
+        = succeed " | " do
+          %a(href="#" style="text-decoration: none; color: #99ca3b;")>
+            greyhd
+        = succeed " | " do
+          %a(href="mailto:support@trygreyhd.com" style="text-decoration: none; color: #000;")>
+            support@trygreyhd.com
+        %a(href="tel:855-926-3501" style="text-decoration: none; color: #000;") 855-926-3501
+    %tr
+      %td(style="font-size: 10px; padding-bottom: 10px;")
+        greyhd Inc, 101 Broadway, San Francisco, CA 94111
+    %tr
+      %td(style="font-size: 10px; padding-bottom: 10px;")
+        Copyright © 2016 greyhd Inc

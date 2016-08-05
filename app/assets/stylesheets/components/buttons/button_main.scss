@@ -1,0 +1,26 @@
+.main-btn {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.4rem;
+  font-weight: 700;
+  color: white;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.01rem;
+  border: none;
+  box-shadow: none;
+  border-radius: 0.3rem;
+  cursor: pointer;
+  padding: 1.2rem 2.5rem;
+  margin-bottom: 1.5rem;
+  &:hover {
+    opacity: 0.9;
+  }
+}
+
+.main-btn--green-300 {
+  background-color: $green-300;
+}
+.main-btn--navy-600 {
+  background-color: $navy-600;
+}

@@ -1,0 +1,134 @@
+.a-db__panel
+  %uib-tabset.a-db(active="active")
+    %uib-tab(index="0")
+      %uib-tab-heading
+        %span.a-db__tab-text
+          = I18n.t('admin.dashboard.tabs.onboarding')
+      .a-db__tab-content-head
+        %h2.a-db__tab-title
+          = I18n.t('admin.dashboard.onboarding.title')
+        %button.simple-btn.simple-btn--blue-380.m-b-2(type="button")
+          = I18n.t('admin.dashboard.onboarding.onboard_new_employee')
+      %ul.a-db__tab-filters
+        %li.a-db__tab-filter.a-db__tab-filter--active
+          %span.a-db__tab-filter-text
+            = I18n.t('admin.dashboard.onboarding.filters.all')
+            %span(ng-bind="'(5)'")
+        %li.a-db__tab-filter
+          %span.a-db__tab-filter-text
+            = I18n.t('admin.dashboard.onboarding.filters.pre_start')
+            %span(ng-bind="'(2)'")
+        %li.a-db__tab-filter
+          %span.a-db__tab-filter-text
+            = I18n.t('admin.dashboard.onboarding.filters.first_week')
+            %span(ng-bind="'(2)'")
+        %li.a-db__tab-filter
+          %span.a-db__tab-filter-text
+            = I18n.t('admin.dashboard.onboarding.filters.first_month')
+            %span(ng-bind="'(1)'")
+
+      %ul.a-db__tab-calcs
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="5")
+          = I18n.t('admin.dashboard.onboarding.calcs.employees')
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="10")
+          = I18n.t('admin.dashboard.onboarding.calcs.incomplete_docs')
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="23")
+          = I18n.t('admin.dashboard.onboarding.calcs.total_tasks')
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="8")
+          = I18n.t('admin.dashboard.onboarding.calcs.overdue_tasks')
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="18")
+          = I18n.t('admin.dashboard.onboarding.calcs.training_modules')
+        %li.a-db__tab-calc
+          %span.font-bold(ng-bind="4")
+          = I18n.t('admin.dashboard.onboarding.calcs.overdue_training_modules')
+
+      .a-db__people-table-wrap
+        %table.a-db__people-table
+          %colgroup
+            %col(style="width: 4rem;")
+            %col(style="width: 18%;")
+            %col(style="width: 23%;")
+            %col(style="width: 15%;")
+            %col(style="width: 14%;")
+            %col(style="width: 11%;")
+            %col
+          %tr
+            %td(colspan="4")
+            %td.a-db__people-table-head-hint(colspan="3")
+              %p.a-db__people-table-head-hint-text
+                = I18n.t('admin.dashboard.onboarding.columns.to_complete')
+          %tr
+            %td
+            %td.a-db__people-table-th
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.name')
+            %td.a-db__people-table-th
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.primary_team')
+            %td.a-db__people-table-th
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.start_date')
+            %td.a-db__people-table-th.text-xs-center
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.docs')
+            %td.a-db__people-table-th.text-xs-center
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.tasks')
+            %td.a-db__people-table-th.text-xs-center
+              %p.a-db__people-table-th-text
+                = I18n.t('admin.dashboard.onboarding.columns.training')
+          - 5.times do
+            %tr.a-db__people-table-tr
+              %td.a-db__people-table-td
+                .a-db__people-table-photo
+                  = image_tag 'temp/agenda_team.jpg', class: 'img-inherit'
+              %td.a-db__people-table-td
+                %p.a-db__people-table-td-text
+                  Nick Newton
+              %td.a-db__people-table-td
+                %p.a-db__people-table-td-text
+                  Customer Success
+              %td.a-db__people-table-td
+                %p.a-db__people-table-td-text
+                  May 2, 2016
+              %td.a-db__people-table-td.text-xs-center
+                %p.a-db__people-table-td-text
+                  1
+              %td.a-db__people-table-td.text-xs-center
+                %p.a-db__people-table-td-text
+                  6
+              %td.a-db__people-table-td.text-xs-center
+                %p.a-db__people-table-td-text
+                  0
+
+      .a-db__people-table-nav
+        %div
+          %span.a-db__people-table-nav-item.a-db__people-table-nav-item--active
+            10
+          %span.a-db__people-table-nav-item
+            20
+          %span.a-db__people-table-nav-item
+            50
+          %span.a-db__people-table-nav-item
+            ALL
+        %div
+          %i.a-db__people-table-nav-icon.icon.icon-arrow-left-double
+          %i.a-db__people-table-nav-icon.icon.icon-arrow-left
+          %span.a-db__people-table-nav-page
+            1
+          %i.a-db__people-table-nav-icon.icon.icon-arrow-right
+          %i.a-db__people-table-nav-icon.icon.icon-arrow-right-double
+
+    %uib-tab(index="1")
+      %uib-tab-heading
+        %span.a-db__tab-text
+          = I18n.t('admin.dashboard.tabs.offboarding')
+    %uib-tab(index="2")
+      %uib-tab-heading
+        %span.a-db__tab-text
+          = I18n.t('admin.dashboard.tabs.all_employees')

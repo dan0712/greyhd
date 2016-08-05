@@ -1,0 +1,57 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-10.offset-lg-1
+        %section.gs-story__section
+          %h1.gs-story__title
+            %span.gs-story__title-text
+              = I18n.t('our_story.title')
+          %p.gs-story__text-sm
+            {{ 'our_story.story_text_first' | translate: { name: onboard_ctrl.company.name } }}
+          .text-xs-center.m-b-3.m-t-3
+            %div(ng-bind-html="onboard_ctrl.company_video")
+        .gs-story__section
+          %h2.gs-story__title-secondary
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.about')
+              {{onboard_ctrl.company.name}}
+          %p.gs-story__text-md
+            {{onboard_ctrl.company.bio}}
+        .gs-story__section
+          %h2.gs-story__title-secondary
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.key_milestones')
+          %uib-tabset.gs-milestones(active="active")
+            %uib-tab(ng-repeat="milestone in onboard_ctrl.company.milestones" index="$index")
+              %uib-tab-heading
+                .gs-milestone__heading
+                  %span.gs-milestone__heading-text
+                    {{milestone.happened_at | date: 'MMM yyyy'}}
+              %article.clearfix
+                %img.gs-milestone__img(ng-src="{{milestone.milestone_image.file.url}}")
+                %p.gs-milestone__year
+                  {{ milestone.happened_at | date: 'MMMM yyyy' }}
+                %h3.gs-milestone__title
+                  {{ milestone.name }}
+                %p.gs-milestone__text
+                  {{ milestone.description }}
+
+        .gs-story__section
+          %h2.gs-story__title-secondary.m-b-3
+            %span.gs-story__title-secondary-text
+              = I18n.t('our_story.company_values')
+          %article.gs-story__values-article
+            %div(ng-repeat="company_value in onboard_ctrl.company.company_values")
+              %h4.gs-story__values-article-title
+                {{ company_value.name }}
+              %p.gs-story__values-article-text
+                {{ company_value.description }}
+
+        .gs-story__section
+          .gs-story__gallery
+            .gs-story__gallery-item-wrap(ng-repeat="gallery_image in onboard_ctrl.company.gallery_images")
+              .gs-story__gallery-item
+                %img.gs-story__gallery-item-img(ng-src="{{gallery_image.file.url}}")
+          .text-xs-center
+            %button.main-btn.main-btn--navy-600.min-12(type="button" animate-in-view="pulse-animation" animate-in-view-timeout="3000" wait-for-animation=".fade-in-animation")
+              = I18n.t('our_story.next')

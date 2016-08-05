@@ -1,0 +1,69 @@
+.a-people__content
+  %h1.a-main__title
+    = I18n.t('admin.people.tasks.assign_tasks')
+  .m-b-2.clearfix
+    %p.a-people__text
+      = I18n.t('admin.people.tasks.description')
+  .a-people__ws-head
+    %h2.a-people__ws-head-title
+      = I18n.t('admin.people.tasks.workstreams')
+  .a-people__ws-box.clearfix
+    .a-people__ws-box-head
+      %p.a-people__ws-box-head-info
+        %span.a-people__ws-box-head-text
+          %span>= I18n.t('admin.people.tasks.workstreams_total')
+          \:
+          %span.font-semi-bold
+            {{ step.workstreamsTotal() }}
+          %span
+            |
+          %span>= I18n.t('admin.people.tasks.tasks_total')
+          \:
+          %span.font-semi-bold
+            {{ step.tasksTotal() }}
+      %div
+        .a-people__ws-box-head-btn(ng-click="step.expand_all.toggle()")
+          %i.a-people__ws-box-head-btn-icon.icon.icon-play
+          %span.a-people__ws-box-head-btn-text
+            {{ step.expand_all.text() }}
+    .a-people__ws-list
+      %uib-accordion(close-others="false")
+        %uib-accordion-group(ng-repeat="workstream in onboard_ctrl.workstreams" is-open="workstream.is_open")
+          %uib-accordion-heading
+            %span.a-people__ws-li-head
+              %span.inline-flex
+                %i.a-people__ws-li-head-arrow
+                %span.a-people__ws-li-head-text
+                  {{ ::workstream.name }}
+              %span
+                %span.a-people__ws-li-head-text
+                  %span
+                    {{ ::workstream.tasks.length }}
+                  = I18n.t('admin.people.tasks.tasks')
+          .a-people__ws-li-content
+            %ul.a-people__ws-li-checklist
+              %li(ng-repeat="task in workstream.tasks")
+                %label.a-people__ws-li-check
+                  .a-people__ws-li-check-wrap
+                    %input.a-people__ws-li-check-icon(type="checkbox"
+                                                      ng-model="task.connected"
+                                                      ng-change="step.toggleConnection(task)")
+                    %span.a-people__ws-li-check-text
+                      {{ ::task.name }}
+                  .a-people__ws-li-check-pic-wrap
+                    %img.a-people__ws-li-check-pic(ng-src="{{ ::task.owner.picture }}"
+                                                   title="{{ ::task.owner.first_name }} {{ ::task.owner.last_name }}")
+            .a-people__ws-li-checklist-actns
+              %span.a-people__ws-li-checklist-actn(ng-click="step.check_all.toggle(workstream)")
+                {{ step.check_all.text(workstream) }}
+    %h2.a-main__title-secondary.m-b-1(ng-if="step.isAnyAssignees()")
+      = I18n.t('admin.people.tasks.assignees')
+    %ul.a-people__assign-list
+      %li.a-people__assign-li(ng-repeat="(id, user) in step.assignees()")
+        .a-people__assign-li-img
+          %img.img-inherit(ng-src="{{ ::user.picture }}"
+                           title="{{ ::user.first_name }} {{ ::user.last_name }}")
+        %span.a-people__assign-li-count
+          {{ user.tasks_count }}
+    %button.simple-btn.simple-btn--blue-380.min-11(type="button" ng-click="step.continue()")
+      = I18n.t('admin.people.continue')

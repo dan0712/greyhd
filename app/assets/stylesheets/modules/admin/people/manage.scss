@@ -1,0 +1,15 @@
+.a-field-box {
+  background-color: $grey-150;
+  border: 0.1rem solid $grey-280;
+  padding: 1.5rem 7.5rem 0.7rem 2rem;
+  margin-bottom: 2.3rem;
+}
+.a-field-box-select-list {
+  display: flex;
+  justify-content: space-between;
+}
+.a-field-box-select-li {
+  width: 100%;
+  max-width: 18rem;
+  flex-shrink: 0;
+}

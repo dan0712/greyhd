@@ -1,0 +1,17 @@
+.a-checkbox__wrap {
+  display: flex;
+}
+.a-checkbox__checkbox {
+  display: inline-block;
+  margin-top: 0.2rem;
+  margin-right: 1rem;
+}
+.a-checkbox__checkbox--sm {
+  width: 1.4rem;
+  height: 1.4rem;
+}
+.a-checkbox__text {
+  font-size: 1.2rem;
+  font-weight: 300;
+  line-height: 1.25;
+}

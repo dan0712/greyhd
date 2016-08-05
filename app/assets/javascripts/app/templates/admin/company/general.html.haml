@@ -1,0 +1,301 @@
+.a-company__panel
+  .a-company__content
+    .a-company__head
+      %h1.a-main__title
+        = I18n.t('admin.company.general.title')
+      %p.a-company__text
+        = I18n.t('admin.company.general.title_hint')
+    %form.a-company__general-form(ng-submit="company_ctrl.save()" name="company_ctrl.form" novalidate="true")
+      .max-42
+        .flex-row.flex-items-xs-between
+          .max-30.flex-grow
+            %label.admin-input__label(for="#{I18n.t('admin.company.general.company_name').parameterize}")
+              = I18n.t('admin.company.general.company_name')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{I18n.t('admin.company.general.company_name').parameterize}"
+                                        type="text"
+                                        name="name"
+                                        required="required"
+                                        ng-model="company_ctrl.company.name")
+              %show-errors(field="name")
+                %p.admin-input__hint.in-red-400(error="required")
+                  = I18n.t('admin.company.general.company_name_req')
+          .max-10.flex-grow
+            %label.admin-input__label(for="#{I18n.t('admin.company.general.abbreviation').parameterize}")
+              = I18n.t('admin.company.general.abbreviation')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{I18n.t('admin.company.general.abbreviation').parameterize}"
+                                        type="text"
+                                        name="abbreviation"
+                                        required="required"
+                                        ng-minlength="2"
+                                        ng-model="company_ctrl.company.abbreviation")
+              %show-errors(field="abbreviation")
+                %p.admin-input__hint.in-red-400(error="required")
+                  = I18n.t('admin.company.general.abbreviation_req')
+                %p.admin-input__hint.in-red-400(error="minlength")
+                  = I18n.t('validation.min_2')
+
+        .flex-row
+          .max-16.flex-grow.m-r-1
+            %label.admin-input__label(for="#{I18n.t('admin.company.general.greyhd_email').parameterize}")
+              = I18n.t('admin.company.general.greyhd_email')
+            .admin-input__wrap
+              %input.admin-input__input(id="#{I18n.t('admin.company.general.greyhd_email').parameterize}"
+                                        type="text"
+                                        name="email"
+                                        ng-model="company_ctrl.company.email"
+                                        required="required"
+                                        ng-minlength="2"
+                                        uniqueness="company_ctrl.company"
+                                        ng-pattern='company_ctrl.email_username_pattern')
+              %show-errors(field="email")
+                %p.admin-input__hint.in-red-400(error="required")
+                  = I18n.t('admin.company.general.greyhd_email_req')
+                %p.admin-input__hint.in-red-400(error="minlength")
+                  = I18n.t('validation.min_2')
+                %p.admin-input__hint.in-red-400(error="uniqueness")
+                  = I18n.t('admin.company.general.greyhd_email_uniq')
+          %p.a-company__general-sap-mail.a-company__text
+            = I18n.t('admin.company.general.greyhd_com')
+
+        .max-13
+          %label.admin-input__label
+            = I18n.t('admin.company.general.brand_color')
+          .admin-input__wrap
+            %color-picker(name="brand_color"
+                          ng-model="company_ctrl.company.brand_color"
+                          color-picker-format="'hex'"
+                          required="required")
+            %show-errors(field="brand_color")
+              %p.admin-input__hint.in-red-400(error="required")
+                = I18n.t('admin.company.general.brand_color_req')
+              %div
+
+        %div
+          %label.admin-input__label
+            = I18n.t('admin.company.general.switch_alerts')
+          .admin-input__wrap.p-t-5
+            %label.a-checkbox__wrap
+              %input.a-checkbox__checkbox.a-checkbox__checkbox--sm(type="checkbox" ng-model="company_ctrl.company.send_email_alerts")
+              %span.a-checkbox__text
+                = I18n.t('admin.company.general.send_alerts')
+                %i.icon.icon-info.m-l-5.in-grey-500.font-14(uib-tooltip="#{I18n.t('admin.company.general.switch_alerts_info')}")
+        %div
+          %label.admin-input__label
+            = I18n.t('admin.company.general.time_zone')
+            %i.icon.icon-info.m-l-5.in-grey-500.font-14(uib-tooltip="#{I18n.t('admin.company.general.time_zone_info')}")
+          .admin-input__wrap
+            %ui-select.main-select(ng-model="company_ctrl.company.time_zone"
+                                   theme="selectize"
+                                   name="time_zone"
+                                   data-qa-id="time-zone")
+              %ui-select-match(placeholder="Select time zone...")
+                {{ $select.selected.utc_offset }} - {{ $select.selected.id }}
+              %ui-select-choices(repeat="time_zone.id as time_zone in [#{ActiveSupport::TimeZone.us_zones.map { |tz| '{id: "' + tz.name + '", utc_offset: "UTC ' + tz.formatted_offset + '"}' }.join(',')}]"
+                                 value="{{ company_ctrl.company.time_zone }}")
+                %span
+                  {{ ::time_zone.utc_offset }} - {{ ::time_zone.id }}
+
+        .max-42
+          %label.admin-input__label
+            = I18n.t('admin.company.general.display_logo')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.display_logo_info')}")
+          .a-drag-drop(ngf-drop="company_ctrl.upload('display_logo_image', $file, $invalidFiles)"
+                       ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                       accept="image/*"
+                       name="display_logo_image"
+                       ngf-pattern="'.jpeg,.jpg,.png,.gif'")
+            .a-drag-drop__img-wrap(ng-if="company_ctrl.company.display_logo_image.file.url && !company_ctrl.isDefaultImage(company_ctrl.company.display_logo_image.file.url)")
+              %span.a-drag-drop__img-remove.icon.icon-cross(ng-click="company_ctrl.removeDisplayLogoImage()")
+              %img.a-drag-drop__img(ng-src="{{company_ctrl.company.display_logo_image.file.url}}" alt="{{company_ctrl.company.display_logo_image.file.url}}")
+            %div(ng-if='!company_ctrl.company.display_logo_image.file.url || company_ctrl.isDefaultImage(company_ctrl.company.display_logo_image.file.url)')
+              %p.a-drag-drop__title
+                = I18n.t('admin.company.general.drag_drop_upload')
+                %br
+                = I18n.t('admin.company.general.or').upcase
+              %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button"
+                                                                       ngf-select="company_ctrl.upload('display_logo_image', $file, $invalidFiles)"
+                                                                       ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                                                                       ngf-pattern="'.jpeg,.jpg,.png,.gif'"
+                                                                       name="display_logo_image"
+                                                                       accept="image/*")
+                = I18n.t('admin.company.general.browse')
+
+        .max-42
+          %label.admin-input__label
+            = I18n.t('admin.company.general.landing_photo')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.landing_photo_info')}")
+          .a-drag-drop(ngf-drop="company_ctrl.upload('landing_page_image', $file, $invalidFiles)"
+                       ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                       accept="image/*"
+                       name="landing_page_image"
+                       ngf-pattern="'.jpeg,.jpg,.png,.gif'")
+            .a-drag-drop__img-wrap(ng-if='company_ctrl.company.landing_page_image.file.url')
+              %span.a-drag-drop__img-remove.icon.icon-cross(ng-click="company_ctrl.removeLandingPageImage()")
+              %img.a-drag-drop__img(ng-src="{{company_ctrl.company.landing_page_image.file.url}}" alt="{{company_ctrl.company.landing_page_image.file.url}}")
+            %div(ng-if="!company_ctrl.company.landing_page_image.file.url")
+              %p.a-drag-drop__title
+                = I18n.t('admin.company.general.drag_drop_upload')
+                %br
+                = I18n.t('admin.company.general.or').upcase
+              %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button"
+                                                                       ngf-select="company_ctrl.upload('landing_page_image', $file, $invalidFiles)"
+                                                                       ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                                                                       ngf-pattern="'.jpeg,.jpg,.png,.gif'"
+                                                                       name="landing_page_image"
+                                                                       accept="image/*")
+                = I18n.t('admin.company.general.browse')
+
+        .max-42
+          %label.admin-input__label
+            = I18n.t('admin.company.general.company_video')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.company_video_info')}")
+          .admin-input__wrap
+            %textarea.admin-input__input(id="#{I18n.t('admin.company.general.company_video').parameterize}"
+                                         rows="13"
+                                         ng-model="company_ctrl.company.company_video")
+
+
+        .max-60
+          %label.admin-input__label(for="#{I18n.t('admin.company.general.company_bio').parameterize}")
+            = I18n.t('admin.company.general.company_bio')
+            \ /
+            = I18n.t('admin.company.general.about_us')
+            %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.company_bio_info')}")
+          .admin-input__wrap
+            %textarea.admin-input__input(id="#{I18n.t('admin.company.general.company_bio').parameterize}"
+                                         rows="13"
+                                         ng-model="company_ctrl.company.bio")
+
+      .max-73.m-b-1
+        %label.admin-input__label
+          = I18n.t('admin.company.general.key_milestones')
+          %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.key_milestones_info')}")
+
+
+        .a-company__add-item-boxes
+          %div(ng-repeat="milestone in company_ctrl.company.milestones")
+            .a-company__add-item-box(ng-hide='milestone._destroy')
+              %i.a-company__item--remove.icon.icon-cross(ng-click="company_ctrl.removeMilestone($index)")
+              .a-company__general-date
+                .admin-input__wrap.m-b-1.max-20
+                  %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                            uib-datepicker-popup="{{company_ctrl.datepicker_format}}"
+                                            name="milestone_{{$index}}_happened_at"
+                                            ng-model="milestone.happened_at"
+                                            is-open="company_ctrl.datepickers[$index].isOpen"
+                                            required="required"
+                                            datepicker-options="company_ctrl.datepickers[$index].options"
+                                            show-button-bar="false"
+                                            required="true"
+                                            id="#{I18n.t('admin.people.create_profile.status').parameterize}_{{$index}}")
+                  %span.admin-input__cal-btn
+                    %i.icon.icon-calendar(ng-click="company_ctrl.datepickers[$index].toggle()")
+                %show-errors(field="milestone_{{$index}}_happened_at")
+                  %p.admin-input__hint.in-red-400(error="required")
+                    = I18n.t('admin.company.general.happened_at_req')
+                %p.help-block.text-danger(ng-show="company_ctrl.form[milestone_{{$index}}_happened_at].$invalid && company_ctrl.form[milestone_{{$index}}_happened_at].$dirty")
+                  = I18n.t('admin.company.general.happened_at_bad')
+
+              .admin-input__wrap
+                %input.admin-input__input(type="text"
+                                          name="milestone_{{$index}}_event" placeholder="#{I18n.t('admin.company.general.event')}"
+                                          ng-model="milestone.name"
+                                          required="required")
+                  %show-errors(field="milestone_{{$index}}_event")
+                    %p.admin-input__hint.in-red-400(error="required")
+                      = I18n.t('admin.company.general.event_req')
+              .admin-input__wrap
+                %textarea.admin-input__input(rows="6"
+                                            type="text"
+                                            placeholder="#{I18n.t('admin.company.general.description')}" name="milestone_{{$index}}_description" ng-model="milestone.description"
+                                            required="required")
+                %show-errors(field="milestone_{{$index}}_description")
+                  %p.admin-input__hint.in-red-400(error="required")
+                    = I18n.t('admin.company.general.description_req')
+
+              .max-24(ng-show="milestone.milestone_image.file.url")
+                %span.a-company__remove-item.m-b-2
+                  %span.a-company__remove-item-text(title="{{milestone.milestone_image.original_filename}}")
+                    {{milestone.milestone_image.original_filename}}
+                  %i.a-company__remove-item-icon.icon.icon-cross(ng-click="company_ctrl.removeMilestoneImage(milestone)")
+              %button.simple-btn.simple-btn--blue-380.min-11(type="button"
+
+                                                             ngf-select="company_ctrl.upload('milestone_image', $file, $invalidFiles, milestone)"
+                                                             ng-hide="milestone.milestone_image.file.url"
+                                                             ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                                                             ngf-pattern="'.jpeg,.jpg,.png,.gif'"
+                                                             accept="image/*")
+                = I18n.t('admin.company.general.upload_photo')
+              %input(type="hidden" ng-model="milestone.milestone_image.file.url" name="milestone_{{$index}}_image" ng-required="true")
+              %show-errors(field="milestone_{{$index}}_image")
+                %p.admin-input__hint.in-red-400(error="required")
+                  = I18n.t('admin.company.general.milestone_image_req')
+        .p-t-5
+          .a-add-item-btn(ng-click="company_ctrl.addMilestone()")
+            %i.a-add-item-btn-icon.icon.icon-plus-rounded
+            %span.a-add-item-btn-text
+              = I18n.t('admin.company.general.add_more_milestones')
+
+      .max-73.m-b-1
+        %label.admin-input__label
+          = I18n.t('admin.company.general.company_values')
+          %i.admin-input__label-info-icon.icon.icon-info(uib-tooltip="#{I18n.t('admin.company.general.company_values_info')}")
+        .a-company__add-item-boxes
+          %div(ng-repeat="companyValue in company_ctrl.company.company_values")
+            .a-company__add-item-box(ng-hide='companyValue._destroy')
+              %i.a-company__item--remove.icon.icon-cross(ng-click="company_ctrl.removeCompanyValue($index)")
+              .admin-input__wrap
+                %input.admin-input__input(type="text"
+                                          placeholder="#{I18n.t('admin.company.general.value')}"
+                                          ng-model="companyValue.name" name="company_value_{{$index}}_value"
+                                          required="required")
+                %show-errors(field="company_value_{{$index}}_value")
+                  %p.admin-input__hint.in-red-400(error="required")
+                    = I18n.t('admin.company.general.value_req')
+              .admin-input__wrap
+                %textarea.admin-input__input(rows="6"
+                                            type="text"
+                                            placeholder="#{I18n.t('admin.company.general.description')}" name="company_value_{{$index}}_description" ng-model="companyValue.description"
+                                            required="required")
+                %show-errors(field="company_value_{{$index}}_description")
+                  %p.admin-input__hint.in-red-400(error="required")
+                    = I18n.t('admin.company.general.description_req')
+
+        .p-t-5
+          .a-add-item-btn(ng-click="company_ctrl.addCompanyValue()")
+            %i.a-add-item-btn-icon.icon.icon-plus-rounded
+            %span.a-add-item-btn-text
+              = I18n.t('admin.company.general.add_more_company_values')
+            %div
+            .max-60.m-b-1
+        %label.admin-input__label
+          = I18n.t('admin.company.general.gallery')
+        .a-company__gallery
+          .a-company__gallery-item(ng-repeat="gallery_image in company_ctrl.company.gallery_images" ng-hide="gallery_image._destroy")
+            %i.a-company__item--remove.icon.icon-cross(ng-click="company_ctrl.removeGalleryImage(gallery_image.id)")
+            %img.a-company__gallery-item-img(ng-src="{{gallery_image.file.url}}" alt="{{gallery_image.file.url}}")
+        .a-drag-drop(ngf-drop="company_ctrl.upload('gallery_image', $newFiles, $invalidFiles)"
+                     ng-if="company_ctrl.showAddGalleryImageInput()"
+                     ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                     ngf-pattern="'.jpeg,.jpg,.png,.gif'"
+                     accept="image/*"
+                     ngf-multiple="true")
+          %p.a-drag-drop__title
+            = I18n.t('admin.company.general.drag_drop_upload')
+            %br
+            = I18n.t('admin.company.general.or').upcase
+          %button.a-drag-drop__btn.simple-btn.simple-btn--blue-380(type="button"
+                                                                   ngf-select="company_ctrl.upload('gallery_image', $newFiles, $invalidFiles, null)"
+                                                                   ngf-accept="'.jpeg,.jpg,.png,.gif'"
+                                                                   ngf-pattern="'.jpeg,.jpg,.png,.gif'"
+                                                                   accept="image/*"
+                                                                   ngf-multiple="true")
+            = I18n.t('admin.company.general.browse')
+          %p.a-drag-drop__title
+            = I18n.t('admin.company.general.max_six_items_allowed')
+      %button.simple-btn.simple-btn--blue-380.min-11.m-r-1(type="submit")
+        = I18n.t('admin.company.general.save')
+      %button.simple-btn.simple-btn--blue-380.min-11(ng-click="company_ctrl.reset($event)")
+        = I18n.t('admin.company.general.cancel')

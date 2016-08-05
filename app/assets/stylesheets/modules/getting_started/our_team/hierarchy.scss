@@ -1,0 +1,109 @@
+$gs-team-team-li-gap: 2rem;
+$gs-team-team-li-width: 12.5rem;
+
+.gs-team__team-list {
+  padding-top: 3rem;
+  padding-bottom: 3.5rem;
+}
+.gs-team__team-list-row-wrap {
+  text-align: center;
+  max-width: 100%;
+  overflow-y: auto;
+}
+.gs-team__team-list-row {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 0;
+}
+.gs-team__team-list-row--main {
+  display: inline-flex;
+  position: relative;
+  &:before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 0;
+    left: $gs-team-team-li-width / 2;
+    right: $gs-team-team-li-width / 2;
+    border-top: 0.1rem dotted $grey-280;
+  }
+}
+.gs-team__team-li {
+  position: relative;
+  flex-shrink: 0;
+  width: $gs-team-team-li-width;
+  text-align: center;
+  padding-left: $gs-team-team-li-gap;
+  padding-right: $gs-team-team-li-gap;
+}
+.gs-team__team-li--top {
+  padding-bottom: 1.5rem;
+  &:after {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: calc(50% - 0.05rem);
+    bottom: 0;
+    width: 0.1rem;
+    height: 1.5rem;
+    border-left: 0.1rem dotted $grey-280;
+  }
+}
+.gs-team__team-li--main {
+  padding-top: 3.7rem;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: calc(50% - 0.05rem);
+    top: 0;
+    height: 3.7rem;
+    border-left: 0.1rem dotted $grey-300;
+  }
+}
+.gs-team__team-li-img {
+  position: relative;
+  width: 7.4rem;
+  height: 7.4rem;
+  border-radius: 50%;
+  text-align: center;
+  overflow: hidden;
+  margin-left: auto;
+  margin-right: auto;
+}
+.gs-team__team-li-info {
+  background-color: white;
+  border-radius: 0.6rem;
+  padding: 1.4rem 0.5rem 0.5rem;
+  margin-top: -1rem;
+}
+.gs-team__team-li-info-title {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  margin-bottom: 0.3rem;
+}
+.gs-team__team-li-info-text {
+  font-size: 0.8rem;
+  font-weight: 300;
+  margin-bottom: 0.3rem;
+}
+.gs-team__team-li-sub {
+  position: relative;
+  padding-top: 3rem;
+  &:before {
+    content: '';
+    display: inline-block;
+    position: absolute;
+    left: calc(50% - 0.05rem);
+    top: 0;
+    height: 3rem;
+    border-left: 0.1rem dotted $grey-300;
+  }
+}
+.gs-team__team-li-sub-img {
+  display: inline-block;
+  cursor: pointer;
+  width: 6.2rem;
+  height: 6.2rem;
+}

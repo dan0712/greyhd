@@ -1,0 +1,167 @@
+.a-people__content
+  %h1.a-main__title
+    = I18n.t('admin.people.create_profile.heading')
+  .m-b-2.clearfix
+    %p.a-people__text
+      = I18n.t('admin.people.create_profile.lets_start')
+
+  %form.m-b-3(ng-submit="step.continue()" name="step.form" novalidate="true")
+    .flex-row.flex-items-xs-between.max-42
+      .max-20.flex-grow
+        %label.admin-input__label(for="#{I18n.t('admin.people.create_profile.first_name').parameterize}")
+          = I18n.t('admin.people.create_profile.first_name')
+        .admin-input__wrap(has-errors="first_name")
+          %input.admin-input__input(id="#{I18n.t('admin.people.create_profile.first_name').parameterize}"
+                                    type="text"
+                                    name="first_name"
+                                    required="required"
+                                    ng-model="onboard_ctrl.user.first_name"
+                                    autocomplete="given-name")
+          %show-errors(field="first_name")
+            %p.admin-input__hint.in-red-400(error="required")
+              = I18n.t('admin.people.create_profile.first_name_req')
+
+      .max-20.flex-grow
+        %label.admin-input__label(for="#{I18n.t('admin.people.create_profile.last_name').parameterize}")
+          = I18n.t('admin.people.create_profile.last_name')
+        .admin-input__wrap(has-errors="last_name")
+          %input.admin-input__input(id="#{I18n.t('admin.people.create_profile.last_name').parameterize}"
+                                    type="text"
+                                    name="last_name"
+                                    required="required"
+                                    ng-model="onboard_ctrl.user.last_name"
+                                    autocomplete="family-name")
+          %show-errors(field="last_name")
+            %p.admin-input__hint.in-red-400(error="required")
+              = I18n.t('admin.people.create_profile.last_name_req')
+
+    %label.admin-input__label(for="#{I18n.t('admin.people.create_profile.title').parameterize}")
+      = I18n.t('admin.people.create_profile.title')
+    .flex-row
+      .max-30.flex-grow.m-r-1
+        .admin-input__wrap(has-errors="title")
+          %input.admin-input__input(id="#{I18n.t('admin.people.create_profile.title').parameterize}"
+                                    type="text"
+                                    name="title"
+                                    required="required"
+                                    ng-model="onboard_ctrl.user.title")
+          %show-errors(field="title")
+            %p.admin-input__hint.in-red-400(error="required")
+              = I18n.t('admin.people.create_profile.title_req')
+
+    %label.admin-input__label(for="#{I18n.t('admin.people.create_profile.personal_email').parameterize}")
+      = I18n.t('admin.people.create_profile.personal_email')
+    .flex-row
+      .max-30.flex-grow.m-r-1
+        .admin-input__wrap(has-errors="personal_email")
+          %input.admin-input__input(id="#{I18n.t('admin.people.create_profile.personal_email').parameterize}"
+                                    type="email"
+                                    name="personal_email"
+                                    ng-model="onboard_ctrl.user.personal_email"
+                                    uniqueness="onboard_ctrl.user"
+                                    autocomplete="email")
+          %show-errors(field="personal_email")
+            %p.admin-input__hint.in-red-400(error="email")
+              = I18n.t('admin.people.create_profile.email_bad')
+
+      .a-people__email-avail(data-qa-id="onboard-personal-email-avail"
+                             ng-show="onboard_ctrl.user.personal_email.length > 0 && step.form.personal_email.$dirty && !step.form.personal_email.$error.uniqueness")
+        %i.a-people__email-avail-icon.icon.icon-check-rounded
+        %span.a-people__email-avail-text
+          = I18n.t('admin.people.create_profile.email_avail')
+
+    %label.admin-input__label(for="#{I18n.t('admin.people.create_profile.company_email').parameterize}")
+      = I18n.t('admin.people.create_profile.company_email')
+    .flex-row
+      .max-30.flex-grow.m-r-1
+        .admin-input__wrap(has-errors="email")
+          %input.admin-input__input(id="#{I18n.t('admin.people.create_profile.company_email').parameterize}"
+                                    type="email"
+                                    name="email"
+                                    required="required"
+                                    ng-model="onboard_ctrl.user.email"
+                                    uniqueness="onboard_ctrl.user"
+                                    autocomplete="email")
+          %show-errors(field="email")
+            %p.admin-input__hint.in-red-400(error="required")
+              = I18n.t('admin.people.create_profile.company_email_req')
+            %p.admin-input__hint.in-red-400(error="email")
+              = I18n.t('admin.people.create_profile.email_bad')
+
+      .a-people__email-avail(data-qa-id="onboard-company-email-avail"
+                             ng-show="step.form.email.$dirty && !step.form.email.$error.uniqueness")
+        %i.a-people__email-avail-icon.icon.icon-check-rounded
+        %span.a-people__email-avail-text
+          = I18n.t('admin.people.create_profile.email_avail')
+
+    .max-20
+      %label.admin-input__label
+        = I18n.t('admin.people.create_profile.start_date')
+      .admin-input__wrap(has-errors="start_date")
+        %input.admin-input__input.admin-input__input--datepicker(type="text"
+                                                                 date-format
+                                                                 uib-datepicker-popup
+                                                                 name="start_date"
+                                                                 ng-model="onboard_ctrl.user.start_date"
+                                                                 is-open="onboard_ctrl.datepicker.isOpen"
+                                                                 datepicker-options="onboard_ctrl.datepicker.options"
+                                                                 show-button-bar="false"
+                                                                 required="true"
+                                                                 ng-focus="onboard_ctrl.datepicker.open()"
+                                                                 on-open-focus="false"
+                                                                 id="#{I18n.t('admin.people.create_profile.status').parameterize}")
+        %span.admin-input__cal-btn(ng-click="onboard_ctrl.datepicker.toggle()")
+          %i.icon.icon-calendar
+        %show-errors(field="start_date")
+          %p.admin-input__hint.in-red-400(error="required")
+            = I18n.t('admin.people.create_profile.start_date_req')
+
+    .flex-row.flex-items-xs-between.max-42
+      .max-20.flex-grow
+        %label.admin-input__label
+          = I18n.t('admin.people.create_profile.location')
+        .admin-input__wrap
+          %ui-select.main-select(ng-model="onboard_ctrl.user.location_id"
+                                 theme="selectize"
+                                 name="location_id"
+                                 data-qa-id="onboard-location")
+            %ui-select-match(placeholder="Select location...")
+              {{ $select.selected.name }}
+            %ui-select-choices(repeat="location.id as location in onboard_ctrl.locations"
+                               value="{{ onboard_ctrl.user.location_id }}")
+              %span
+                {{ ::location.name }}
+
+      .max-20.flex-grow
+        %label.admin-input__label
+          = I18n.t('admin.people.create_profile.team')
+        .admin-input__wrap
+          %ui-select.main-select(ng-model="onboard_ctrl.user.team_id"
+                                 theme="selectize"
+                                 name="team_id"
+                                 data-qa-id="onboard-team")
+            %ui-select-match(placeholder="Select team...")
+              {{ $select.selected.name }}
+            %ui-select-choices(repeat="team.id as team in onboard_ctrl.teams"
+                               value="{{ onboard_ctrl.user.team_id }}")
+              %span
+                {{ ::team.name }}
+
+    .max-20
+      %label.admin-input__label
+        = I18n.t('admin.people.create_profile.manager')
+      .admin-input__wrap
+        %ui-select.main-select(ng-model="onboard_ctrl.user.manager_id"
+                               theme="selectize"
+                               name="manager_id"
+                               data-qa-id="onboard-manager")
+          %ui-select-match(placeholder="Select manager...")
+            {{ $select.selected.first_name }} {{ $select.selected.last_name }}
+          %ui-select-choices(repeat="manager.id as manager in onboard_ctrl.managers"
+                             value="{{ onboard_ctrl.user.manager_id }}")
+            %span
+              {{ ::manager.first_name }} {{ ::manager.last_name }}
+
+    %div
+      %button.simple-btn.simple-btn--blue-380.min-11(type="submit")
+        = I18n.t('admin.people.continue')

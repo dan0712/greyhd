@@ -1,0 +1,23 @@
+.sec-btn {
+  display: inline-block;
+  vertical-align: middle;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  text-align: center;
+  letter-spacing: 0.01rem;
+  border-width: 0.1rem;
+  border-style: solid;
+  box-shadow: none;
+  border-radius: 0.3rem;
+  padding: 0.8rem 1.5rem;
+  margin-bottom: 1.5rem;
+}
+.sec-btn--red-400 {
+  border-color: $red-400;
+  color: $red-400;
+  &:hover {
+    background-color: $red-400;
+    color: white;
+  }
+}

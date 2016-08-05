@@ -1,0 +1,84 @@
+.gs-main-container
+  .container
+    .row
+      .col-xs-12.col-md-10.offset-md-2.col-lg-10.offset-lg-1
+        .gs-welcome__content-box
+          %h1.gs-welcome__title
+            = I18n.t('onboard.welcome.title_part_one')
+            %strong.font-semi-bold
+              {{onboard_ctrl.current_user.title}}
+            = I18n.t('onboard.welcome.title_part_two')
+            {{onboard_ctrl.company.name}}!
+          %p.gs-welcome__hint
+            {{ 'onboard.welcome.hint' | translate: { name: onboard_ctrl.company.name } }}
+
+
+        %h2.gs-welcome__agenda-title
+          = I18n.t('onboard.welcome.agenda.title')
+        %ul.gs-welcome__agenda-list
+          %li.gs-welcome__agenda-li
+            .gs-welcome__agenda-li-info
+              %h3.gs-welcome__agenda-li-title
+                = I18n.t('onboard.welcome.agenda.story_title')
+              %p.gs-welcome__agenda-li-text
+                {{ 'onboard.welcome.agenda.story_desription' | translate: { name: onboard_ctrl.company.name } }}
+            .gs-welcome__agenda-li-img-box
+              = image_tag 'temp/our_story.jpg', class: 'gs-welcome__agenda-li-img'
+          %li.gs-welcome__agenda-li
+            .gs-welcome__agenda-li-info
+              %h3.gs-welcome__agenda-li-title
+                = I18n.t('onboard.welcome.agenda.team_title')
+              %p.gs-welcome__agenda-li-text
+                {{ 'onboard.welcome.agenda.team_desription' | translate: { name: onboard_ctrl.company.name, teams_count: onboard_ctrl.company.teams_count, users_count: onboard_ctrl.company.users_count } }}
+            .gs-welcome__agenda-li-img-box
+              = image_tag 'temp/agenda_team.jpg', class: 'gs-welcome__agenda-li-img'
+          %li.gs-welcome__agenda-li
+            .gs-welcome__agenda-li-info
+              %h3.gs-welcome__agenda-li-title
+                = I18n.t('onboard.welcome.agenda.about_you_title')
+              %p.gs-welcome__agenda-li-text
+                {{ 'onboard.welcome.agenda.about_you_description' | translate: { name: onboard_ctrl.company.name } }}
+            .gs-welcome__agenda-li-img-box
+              = image_tag 'temp/about_you.jpg', class: 'gs-welcome__agenda-li-img'
+          %li.gs-welcome__agenda-li
+            .gs-welcome__agenda-li-info
+              %h3.gs-welcome__agenda-li-title
+                = I18n.t('onboard.welcome.agenda.wrap_up_title')
+              %p.gs-welcome__agenda-li-text
+                {{ 'onboard.welcome.agenda.wrap_up_description' | translate: { name: onboard_ctrl.company.name } }}
+            .gs-welcome__agenda-li-img-box
+              %img.gs-welcome__agenda-li-img(ng-src="{{onboard_ctrl.company.logo}}" alt="")
+
+        .gs-welcome__content-box(ng-if="onboard_ctrl.current_user.manager")
+          %p.gs-welcome__text
+            {{ 'onboard.welcome.reach_out' | translate: { name: onboard_ctrl.current_user.manager.name } }}
+        .gs-welcome__mentor.clearfix(ng-if="onboard_ctrl.current_user.manager")
+          .gs-welcome__mentor-photo
+            %img.gs-welcome__mentor-photo-img(ng-src="{{onboard_ctrl.current_user.manager.picture}}" alt="")
+          .gs-welcome__mentor-info
+            %p.gs-welcome__mentor-title
+              %span.gs-welcome__mentor-title-name
+                {{ onboard_ctrl.current_user.manager.name }}
+                ,
+              {{ onboard_ctrl.current_user.manager.title }}
+            %p.gs-welcome__mentor-about
+              {{ onboard_ctrl.current_user.manager.bio }}
+            %ul.gs-welcome__mentor-contacts
+              %li.gs-welcome__mentor-contact
+                %a.align-middle(href="mailto:{{onboard_ctrl.current_user.manager.email}}")
+                  {{ onboard_ctrl.current_user.manager.email }}
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  = I18n.t('stubs.welcome.mentor.phone')
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  {{ onboard_ctrl.current_user.manager.location.name }}
+              %li.gs-welcome__mentor-contact
+                %span.align-middle
+                  {{ 'onboard.welcome.joined' | translate: { date: onboard_ctrl.formatDate(onboard_ctrl.current_user.manager.start_date) } }}
+        .gs-welcome__content-box
+          %p.gs-welcome__text.text-xs-center
+            {{ 'onboard.welcome.what_next' | translate: { name: onboard_ctrl.company.name } }}
+        .m-b-3.text-xs-center
+          %button.main-btn.main-btn--green-300.min-12(type="button" ng-click="onboard_ctrl.nextStep(1)" animate-in-view="pulse-animation" animate-in-view-timeout="3000" wait-for-animation=".fade-in-animation")
+            = I18n.t('onboard.welcome.next')

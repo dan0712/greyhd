@@ -1,0 +1,23 @@
+%header.header-get-start(ng-show="onboard_ctrl.onboarding_started" id="onboarding-header")
+  .container
+    .row
+      .col-xs-12.col-md-2.col-lg-1.text-xs-center.text-md-right
+        %a.header-get-start__logo(href='#')
+          %img.header-get-start__logo-img(ng-src="{{onboard_ctrl.company.logo}}")
+      .col-xs-12.col-md-10.col-lg-11
+        %ul.header-get-start__path
+          %li.header-get-start__path-li(ui-sref="onboard.welcome" ng-class="{ 'header-get-start__path-li--complete': onboard_ctrl.isStepComplete(0)}" ui-sref-active="header-get-start__path-li--active")
+            = I18n.t('onboard.steps.welcome')
+          %li.header-get-start__path-li(ui-sref="onboard.our_story" ng-class="{ 'header-get-start__path-li--complete': onboard_ctrl.isStepComplete(1) }" ng-if="onboard_ctrl.isStepComplete(1) || onboard_ctrl.isStepActive(1)" ui-sref-active="header-get-start__path-li--active")
+            = I18n.t('onboard.steps.our_story')
+          %li.header-get-start__path-li(ng-if="!(onboard_ctrl.isStepComplete(1) || onboard_ctrl.isStepActive(1))")
+            = I18n.t('onboard.steps.our_story')
+          %li.header-get-start__path-li
+            = I18n.t('onboard.steps.our_team')
+          %li.header-get-start__path-li
+            = I18n.t('onboard.steps.about_you')
+          %li.header-get-start__path-li
+            = I18n.t('onboard.steps.road_map')
+          %li.header-get-start__path-li
+            = I18n.t('onboard.steps.wrap_up')
+%ui-view
